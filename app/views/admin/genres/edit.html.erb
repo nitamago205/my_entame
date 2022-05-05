@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="roe justify-content-center">
+    <div class="col-md-10">
+      <h4 class="bg-light px-2">ジャンル編集</h4>
+      <%= form_with model: [:admin,@genre] do |f| %>
+        <div class="row my-4 form-group">
+          <%= f.label "ジャンル名", class: "col-sm-2 col-form-label" %>
+          <div class="col-sm-6">
+          <%= f.text_field :genre_name, class: "form-control" %>
+          </div>
+          <%= f.submit "変更を保存", class: "btn btn-success" %>
+
+        </div>
+      <%end%>
+      <%= link_to "削除", admin_genre_path(@genre.id), method: :delete %>
+    </div>
+  </div>
+</div>

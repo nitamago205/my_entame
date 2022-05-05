@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   }
 
   namespace :admin do
-   resources :ganres, only: [:index, :create, :edit, :update, :destroy]
+   resources :genres, only: [:index, :create, :edit, :update, :destroy]
    resources :users, only: [:index, :show, :edit, :update, :destroy]
    resources :posts, only: [:index, :show, :edit, :update, :destroy] do
     resources :my_selects, only: [:show, :edit, :update, :destroy]
