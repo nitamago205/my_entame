@@ -1,0 +1,49 @@
+<div class='container'>
+  <div class='row'>
+    <div class='col-md-8 offset-md-1'>
+  		<h2>投稿詳細</h2>
+  		<table class='table'>
+  		  <tr>
+          <td>ユーザー名</td>
+          <td>
+            <%= link_to(@post.user) do %>
+              <%= image_tag @post.user.get_profile_image, size:"60x60" %>
+              <%= @post.user.name %>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td>タイトル</td>
+          <td><%= @post.title %></td>
+        </tr>
+        <tr>
+          <td>本文</td>
+          <td><%= @post.body %></td>
+        </tr>
+        <tr>
+          <td>ジャンル名</td>
+          <td><%= @post.genre.genre_name %></td>
+        </tr>
+          <!--<td class=<%#= "favorite-" + @post.id.to_s %> >-->
+          <!--  <%#= render "favorites/btn", post: @post %>-->
+          <!--</td>-->
+          <!--<td class="post-comments-counter">-->
+          <!--  <%#= render "post_comments/counter", post: @post %>-->
+          <!--</td>-->
+        <tr>
+          <td>レート</td>
+          <td><%= render "public/posts/static_rate", post: @post %></td>
+        </tr>
+        <td><%= link_to '編集', edit_admin_post_path(@post), class: "btn btn-sm btn-success edit_post_#{@post.id}" %></td>
+        <td><%= link_to '削除', admin_post_path(@post), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_post_#{@post.id}" %></td>
+      </table>
+
+      <!--<div class="post-comments-index">-->
+      <!--  <%#= render "post_comments/index", post: @post %>-->
+      <!--</div>-->
+
+      <%#= render "post_comments/form", post: @post, post_comment: @post_comment %>
+
+    </div>
+  </div>
+</div>

@@ -1,28 +1,6 @@
 <div class="container">
   <div class="row">
-    <h3 class="my-5 bg-light">会員一覧</h3>
+    <h3 class="my-5 bg-light">ユーザー一覧</h3>
   </div>
-  <div class="row mb-5">
-    <table class="table table-border table-hover">
-      <thead>
-        <tr class="bg-light">
-          <th>会員ID</th>
-          <th>氏名</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @users.each do |user| %>
-          <tr>
-            <td><%= user.id %></td>
-            <td>
-              <%= link_to user_path(user) do %>
-                <%= user.name %>
-              <% end %>
-            </td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-    <%#= paginate @users %>
-  </div>
+  <%= render 'index',users: @users %>
 </div>
