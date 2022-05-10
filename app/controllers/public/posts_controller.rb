@@ -15,7 +15,7 @@ class Public::PostsController < ApplicationController
     else
      @posts = Post.all
     end
-    
+
   end
 
   def show
@@ -30,6 +30,8 @@ class Public::PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
+
+    @post.rate = 0 if @post.rate.blank?
     if @post.save
       redirect_to post_path(@post), notice: "新しく投稿しました。"
     else

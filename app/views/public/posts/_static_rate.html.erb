@@ -1,5 +1,6 @@
 <div id="rate_<%= post.id %>" class="form-group"></div>
 <script>
+  $('#rate_<%= post.id %>').empty();
   $('#rate_<%= post.id %>').raty({
     size: 20,
     starOff:  '<%= asset_path('star-off.png') %>',

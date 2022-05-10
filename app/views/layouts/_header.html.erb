@@ -1,16 +1,94 @@
-<% if user_signed_in? %>
- <li>
-  <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
- </li>
-<% elsif admin_signed_in? %>
- <li>
-  <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
- </li>
-<% else %>
- <li>
-  <%= link_to "新規登録", new_user_registration_path %>
- </li>
- <li>
-  <%= link_to "ログイン", new_user_session_path %>
- </li>
-<% end %>
+<nav class="navbar navbar-expand-lg navbar-dark shadow-sm">
+    <div class="container">
+      <a class="navbar-brand" href="/">
+        <%= image_tag 'my_entame_logo.png', size: "100x65" %>
+      </a>
+      <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation" >
+            <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav ml-auto">
+          <% if admin_signed_in? %>
+            <li class="nav-item">
+              <%= link_to admin_posts_path, class: "nav-link text-light btn btn-primary mr-1 mb-1" do %>
+                <i class="fas fa-list"></i> 投稿一覧
+              <% end %>
+            </li>
+            <li class="nav-item">
+              <%= link_to admin_users_path, class: "nav-link text-light btn btn-primary mr-1 mb-1" do %>
+                <i class="fas fa-users"></i> ユーザー一覧
+              <% end %>
+            </li>
+            <li class="nav-item">
+              <%= link_to admin_genres_path, class: "nav-link text-light btn btn-primary mr-1 mb-1" do %>
+                <i class="fas fa-layer-group"></i> ジャンル一覧
+              <% end %>
+            </li>
+            <li class="nav-item">
+              <%= link_to destroy_admin_session_path, method: :delete, class: "nav-link text-light btn btn-primary mr-1 mb-1" do %>
+                <i class="fas fa-sign-out-alt"></i> ログアウト
+              <% end %>
+            </li>
+          <% elsif user_signed_in? %>
+            <p class="text-white mr-2 my-auto text-nowrap"><small>ようこそ</small><%= current_user.name %><small>さん！</small></p>
+            <li class="nav-item">
+              <%= link_to user_path(current_user), class: "nav-link text-light text-nowrap btn btn-primary mr-1 mb-1" do %>
+                <i class="fas fa-user-circle"></i> マイページ
+              <% end %>
+            </li>
+            <li class="nav-item">
+              <%= link_to posts_path, class: "nav-link text-light text-nowrap btn btn-primary mr-1 mb-1" do %>
+                <i class="fas fa-list"></i> 投稿一覧
+              <% end %>
+            </li>
+            <li class="nav-item">
+              <%= link_to users_path, class: "nav-link text-light btn btn-primary mr-1 mb-1" do %>
+                <i class="fas fa-users"></i> ユーザー一覧
+              <% end %>
+            </li>
+            <li class="nav-item">
+              <%= link_to destroy_user_session_path, method: :delete, class:"nav-link text-light text-nowrap btn btn-primary mr-1 mb-1" do %>
+                <i class="fas fa-sign-out-alt"></i> ログアウト
+              <% end %>
+            </li>
+          <% else %>
+            <li class="nav-item">
+              <%= link_to about_path, class: "nav-link text-light btn btn-primary mr-1 mb-1" do %>
+                <i class="fas fa-link"></i> About
+              <% end %>
+            </li>
+            <li class="nav-item">
+              <%= link_to posts_path, class: "nav-link text-light btn btn-primary mr-1 mb-1" do %>
+                <i class="fas fa-list"></i> 投稿一覧
+              <% end %>
+            </li>
+            <li class="nav-item">
+              <%= link_to users_path, class: "nav-link text-light btn btn-primary mr-1 mb-1" do %>
+                <i class="fas fa-users"></i> ユーザー一覧
+              <% end %>
+            </li>
+            <li class="nav-item">
+              <%= link_to new_user_registration_path, class: "nav-link text-light btn btn-primary mr-1 mb-1" do %>
+                <i class="fas fa-user-plus"></i> 新規登録
+              <% end %>
+            </li>
+            <li class="nav-item">
+              <%= link_to new_user_session_path, class: "nav-link text-light btn btn-primary mr-1 mb-1" do %>
+                <i class="fas fa-sign-in-alt"></i> ログイン
+              <% end %>
+            </li>
+          <% end %>
+        </ul>
+        <!--<div>-->
+          <%#= search_form_for @search, url: products_path do |f| %>
+            <%#= f.text_field :name_cont %>
+            <%#= f.submit "検索" %>
+          <%# end %>
+          <!--<form class="d-flex">-->
+          <!--  <input class="form-control mr-2 mb-1" type="search" placeholder="Search" aria-label="Search">-->
+          <!--  <button class="btn btn-outline-success mb-1" type="submit">Search</button>-->
+          <!--</form>-->
+        </div>
+      </div>
+    </div>
+  </nav>
