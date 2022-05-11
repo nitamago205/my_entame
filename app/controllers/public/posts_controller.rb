@@ -20,6 +20,7 @@ class Public::PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    @selects = MySelect.where(post_id: @post.id)
   end
 
   def new
