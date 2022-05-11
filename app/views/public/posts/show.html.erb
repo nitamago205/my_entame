@@ -1,0 +1,79 @@
+<div class='container'>
+  <div class='row'>
+    <div class='col-md-10 offset-md-1'>
+  		<h2>投稿詳細</h2>
+  		<table class='table'>
+  		  <tr>
+          <td>ユーザー名</td>
+          <td>
+            <%= link_to(@post.user) do %>
+              <%= image_tag @post.user.get_profile_image, size:"60x60" %>
+              <%= @post.user.name %>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td>タイトル</td>
+          <td><%= @post.title %></td>
+        </tr>
+        <tr>
+          <td>本文</td>
+          <td><%= @post.body %></td>
+        </tr>
+        <tr>
+          <td>ジャンル名</td>
+          <td><%= @post.genre.genre_name %></td>
+        </tr>
+          <!--<td class=<%#= "favorite-" + @post.id.to_s %> >-->
+          <!--  <%#= render "favorites/btn", post: @post %>-->
+          <!--</td>-->
+          <!--<td class="post-comments-counter">-->
+          <!--  <%#= render "post_comments/counter", post: @post %>-->
+          <!--</td>-->
+        <tr>
+          <td>レート</td>
+          <td><%= render "static_rate", post: @post %></td>
+        </tr>
+          <% if @post.user == current_user %>
+            <td><%= link_to '編集', edit_post_path(@post), class: "btn btn-sm btn-success edit_post_#{@post.id}" %></td>
+            <td><%= link_to '削除', @post, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_post_#{@post.id}" %></td>
+          <% end %>
+      </table>
+
+      <h3>マイセレクト一覧</h3>
+      <div class="row">
+        <%= link_to new_post_my_select_path(@post), class: "text-dark mb-2" do %>
+          <i class="fas fa-plus"></i> 新規マイセレクト追加
+        <%end%>
+      </div>
+      <% if @selects.exists? %>
+        <table class='table table-hover table-inverse'>
+          <thead>
+            <tr>
+              <th>タイトル</th>
+              <th>本文</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @selects.each do |select| %>
+              <tr>
+                <td><%= select.title %></td>
+                <td><%= select.body %></td>
+                 <% if @post.user == current_user %>
+                  <td>
+                    <%= link_to '編集', edit_post_my_select_path(select), class: "btn btn-sm btn-success edit_post_my_select_#{select.id}" %>
+                    <%= link_to '削除', post_my_select_path(@post, select), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_post_my_select_#{select.id}" %>
+                  </td>
+                <% end %>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      <% else %>
+        <p>マイセレクトはありません</p>
+      <% end %>
+
+    </div>
+  </div>
+</div>
