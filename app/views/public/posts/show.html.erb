@@ -41,10 +41,13 @@
       </table>
 
       <h3>マイセレクト一覧</h3>
+
       <div class="row">
-        <%= link_to new_post_my_select_path(@post), class: "text-dark mb-2" do %>
-          <i class="fas fa-plus"></i> 新規マイセレクト追加
-        <%end%>
+        <% if @post.user == current_user %>
+          <%= link_to new_post_my_select_path(@post), class: "text-dark mb-2" do %>
+            <i class="fas fa-plus"></i> 新規マイセレクト追加
+          <% end %>
+        <% end %>
       </div>
       <% if @selects.exists? %>
         <table class='table table-hover table-inverse'>
@@ -62,7 +65,7 @@
                 <td><%= select.body %></td>
                  <% if @post.user == current_user %>
                   <td>
-                    <%= link_to '編集', edit_post_my_select_path(select), class: "btn btn-sm btn-success edit_post_my_select_#{select.id}" %>
+                    <%= link_to '編集', edit_post_my_select_path(@post, select), class: "btn btn-sm btn-success edit_post_my_select_#{select.id}" %>
                     <%= link_to '削除', post_my_select_path(@post, select), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_post_my_select_#{select.id}" %>
                   </td>
                 <% end %>

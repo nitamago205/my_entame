@@ -33,10 +33,6 @@ class Public::MySelectsController < ApplicationController
     @select = MySelect.find_by(id: params[:id], post_id: params[:post_id])
     if @select.destroy
       redirect_to post_path(@select.post_id)
-    else
-      @post = Post.find(params[:id])
-      @selects = MySelect.where(post_id: @post.id)
-      render :"posts/show"
     end
   end
 

@@ -38,6 +38,36 @@
         <td><%= link_to '削除', admin_post_path(@post), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_post_#{@post.id}" %></td>
       </table>
 
+      <h3>マイセレクト一覧</h3>
+
+      <div class="row">
+      </div>
+      <% if @selects.exists? %>
+        <table class='table table-hover table-inverse'>
+          <thead>
+            <tr>
+              <th>タイトル</th>
+              <th>本文</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @selects.each do |select| %>
+              <tr>
+                <td><%= select.title %></td>
+                <td><%= select.body %></td>
+                  <td>
+                    <%= link_to '編集', edit_admin_post_my_select_path(@post, select), class: "btn btn-sm btn-success edit_post_my_select_#{select.id}" %>
+                    <%= link_to '削除', admin_post_my_select_path(@post, select), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_post_my_select_#{select.id}" %>
+                  </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      <% else %>
+        <p>マイセレクトはありません</p>
+      <% end %>
+
       <!--<div class="post-comments-index">-->
       <!--  <%#= render "post_comments/index", post: @post %>-->
       <!--</div>-->
