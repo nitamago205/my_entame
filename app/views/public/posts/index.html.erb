@@ -1,18 +1,19 @@
 <div class='container'>
   <div class='row'>
-    <div class='col-md-8 offset-md-1'>
-      <h2>投稿一覧</h2>
-      <div class="row">
-        <% if user_signed_in? %>
-          <%= link_to new_post_path, class: "text-dark mb-2" do %>
-            <i class="fas fa-plus"></i> 新規投稿登録
-          <% end %>
-        <% end %>
-      </div>
+    <h2 class="my-5 bg-light">投稿一覧</h2>
+  </div>
+  <div class="row">
+    <% if user_signed_in? %>
+      <%= link_to new_post_path, class: "text-dark mb-2" do %>
+        <i class="fas fa-plus"></i> 新規投稿登録
+      <% end %>
+    <% end %>
+  </div>
+  <div class="row">
+      <%#= sort_link(@posts, :created_at, "新しい順") %>
       <%= link_to "新しい順", posts_path(latest: "true") %> |
       <%= link_to "古い順", posts_path(old: 'true') %> |
       <%= link_to "レートの高い順", posts_path(star_count: 'true') %>
       <%= render 'index', posts: @posts %>
-    </div>
   </div>
 </div>
