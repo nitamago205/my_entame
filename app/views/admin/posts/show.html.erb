@@ -24,9 +24,8 @@
           <td>ジャンル名</td>
           <td><%= @post.genre.genre_name %></td>
         </tr>
-          <!--<td class=<%#= "favorite-" + @post.id.to_s %> >-->
-          <!--  <%#= render "favorites/btn", post: @post %>-->
-          <!--</td>-->
+          <td>いいね数</td>
+          <td><i class="fas fa-heart"></i>︎<%= @post.favorites.count %></td>
           <!--<td class="post-comments-counter">-->
           <!--  <%#= render "post_comments/counter", post: @post %>-->
           <!--</td>-->
