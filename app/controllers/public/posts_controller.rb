@@ -6,16 +6,9 @@ class Public::PostsController < ApplicationController
   end
 
   def index
-    if params[:latest]
-     @posts = Post.latest
-    elsif params[:old]
-     @posts = Post.old
-    elsif params[:star_count]
-     @posts = Post.star_count
-    else
-     @posts = Post.all
-    end
-
+    @q = Post.ransack(params[:q])
+    @posts = @q.result(distinct: true).page(params[:page]).per(10)
+    @genres = Genre.all
   end
 
   def show
@@ -68,5 +61,6 @@ class Public::PostsController < ApplicationController
   def post_params
     params.require(:post).permit(:title, :body, :rate, :genre_id)
   end
+
 
 end

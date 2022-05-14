@@ -6,15 +6,9 @@ class Public::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    if params[:latest]
-     @posts = @user.posts.latest
-    elsif params[:old]
-     @posts = @user.posts.old
-    elsif params[:star_count]
-     @posts = @user.posts.star_count
-    else
-     @posts = @user.posts
-    end
+    @q = @user.posts.ransack(params[:q])
+    @posts = @q.result(distinct: true).page(params[:page]).per(10)
+    @genres = Genre.all
   end
 
   def edit

@@ -9,5 +9,8 @@
       <%= f.submit "検索" %>
     <% end %>
   </div>
-  <%= render 'index',users: @users %>
+  <div class="row">
+    <%= sort_link(@q, :created_at, "古い順/新しい順") %>
+    <%= render 'index', users: @users %>
+  </div>
 </div>

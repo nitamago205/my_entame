@@ -1,6 +1,7 @@
 class Admin::UsersController < ApplicationController
   def index
-    @users = User.all.page(params[:page]).per(10)
+    @q = User.ransack(params[:q])
+    @users = @q.result(distinct: true).where(is_deleted: false).page(params[:page]).per(10)
   end
 
   def show
