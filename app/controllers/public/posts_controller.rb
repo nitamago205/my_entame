@@ -1,13 +1,7 @@
 class Public::PostsController < ApplicationController
-  def top
-  end
-
-  def about
-  end
-
   def index
     @q = Post.ransack(params[:q])
-    @posts = @q.result(distinct: true).page(params[:page]).per(10)
+    @posts = @q.result(distinct: true).page(params[:page]).per(3)
     @genres = Genre.all
   end
 

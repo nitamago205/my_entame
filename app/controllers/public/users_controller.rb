@@ -1,4 +1,6 @@
 class Public::UsersController < ApplicationController
+  before_action :ensure_normal_user, only: [:out, :update]
+
   def index
     @q = User.ransack(params[:q])
     @users = @q.result(distinct: true).where(is_deleted: false).page(params[:page]).per(10)
@@ -36,10 +38,16 @@ class Public::UsersController < ApplicationController
     redirect_to root_path
   end
 
+  def ensure_normal_user
+    if current_user.email == 'guest@example.com'
+      redirect_to root_path, alert: 'ゲストユーザーはユーザー情報の編集、退会ができません。'
+    end
+  end
+
   private
 
   def user_params
-    params.require(:user).permit(:name, :profile_image, :is_deleted)
+    params.require(:user).permit(:name, :email, :profile_image, :is_deleted)
   end
 
 
