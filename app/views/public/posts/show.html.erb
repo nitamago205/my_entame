@@ -1,55 +1,62 @@
 <div class='container'>
   <div class='row'>
-    <div class='col-md-10 offset-md-1'>
-  		<h2>投稿詳細</h2>
-  		<table class='table'>
-  		  <tr>
-          <td>ユーザー名</td>
-          <td>
-            <%= link_to(@post.user) do %>
-              <%= image_tag @post.user.get_profile_image, size:"60x60" %>
-              <%= @post.user.name %>
-            <% end %>
-          </td>
-        </tr>
-        <tr>
-          <td>タイトル</td>
-          <td><%= @post.title %></td>
-        </tr>
-        <tr>
-          <td>本文</td>
-          <td><%= @post.body %></td>
-        </tr>
-        <tr>
-          <td>ジャンル名</td>
-          <td><%= @post.genre.genre_name %></td>
-        </tr>
-          <td>いいね数</td>
-          <td id="favorite_buttons_<%= @post.id %>">
-            <%= render "public/favorites/btn", post: @post %>
-          </td>
-          <!--<td class="post-comments-counter">-->
-          <!--  <%#= render "post_comments/counter", post: @post %>-->
-          <!--</td>-->
-        <tr>
-          <td>レート</td>
-          <td><%= render "static_rate", post: @post %></td>
-        </tr>
-          <% if @post.user == current_user %>
-            <td><%= link_to '編集', edit_post_path(@post), class: "btn btn-sm btn-success edit_post_#{@post.id}" %></td>
-            <td><%= link_to '削除', @post, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_post_#{@post.id}" %></td>
+		<h2 class="my-4 bg-light">投稿詳細</h2>
+		<table class='table'>
+		  <tr>
+        <td>ユーザー名</td>
+        <td>
+          <%= link_to(@post.user) do %>
+            <%= image_tag @post.user.get_profile_image, size:"60x60" %>
+            <%= @post.user.name %>
           <% end %>
-      </table>
-
-      <h3>マイセレクト一覧</h3>
-
-      <div class="row">
+        </td>
+      </tr>
+      <tr>
+        <td>タイトル</td>
+        <td><%= @post.title %></td>
+      </tr>
+      <tr>
+        <td>本文</td>
+        <td><%= @post.body %></td>
+      </tr>
+      <tr>
+        <td>ジャンル名</td>
+        <td><%= @post.genre.genre_name %></td>
+      </tr>
+      <tr>
+        <td>いいね数</td>
+        <td id="favorite_buttons_<%= @post.id %>">
+          <%= render "public/favorites/btn", post: @post %>
+        </td>
+      </tr>
+      <tr>
+        <td>コメント数</td>
+        <td class="post-comments-counter">
+          <%= render "public/post_comments/counter", post: @post %>
+        </td>
+      </tr>
+      <tr>
+        <td>レート</td>
+        <td><%= render "static_rate", post: @post %></td>
+      </tr>
         <% if @post.user == current_user %>
-          <%= link_to new_post_my_select_path(@post), class: "text-dark mb-2" do %>
-            <i class="fas fa-plus"></i> 新規マイセレクト追加
-          <% end %>
+          <td><%= link_to '編集', edit_post_path(@post), class: "btn btn-sm btn-success edit_post_#{@post.id}" %></td>
+          <td><%= link_to '削除', @post, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_post_#{@post.id}" %></td>
         <% end %>
-      </div>
+    </table>
+  </div>
+  <div>
+    <div class="row">
+      <h3 class="my-2 bg-light">マイセレクト一覧</h3>
+    </div>
+    <div class="row">
+      <% if @post.user == current_user %>
+        <%= link_to new_post_my_select_path(@post), class: "text-dark mb-2" do %>
+          <i class="fas fa-plus"></i> 新規マイセレクト追加
+        <% end %>
+      <% end %>
+    </div>
+    <div class="row">
       <% if @selects.exists? %>
         <table class='table table-hover table-inverse'>
           <thead>
@@ -77,7 +84,18 @@
       <% else %>
         <p>マイセレクトはありません</p>
       <% end %>
-
     </div>
+
+    <div>
+      <div class="row">
+        <h3 class="my-2 bg-light">コメント</h3>
+      </div>
+      <div class="post-comments-index">
+        <%= render "public/post_comments/index", post: @post %>
+      </div>
+
+      <%= render "public/post_comments/form", post: @post, post_comment: @post_comment %>
+    </div>
+
   </div>
 </div>

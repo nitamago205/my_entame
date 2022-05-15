@@ -32,13 +32,13 @@ class Public::MySelectsController < ApplicationController
   def destroy
     @select = MySelect.find_by(id: params[:id], post_id: params[:post_id])
     if @select.destroy
-      redirect_to post_path(@select.post_id)
+      redirect_to post_path(@select.post_id), notice: "マイセレクトを削除しました。"
     end
   end
 
   private
 
   def my_select_params
-    params.require(:my_select).permit(:title, :body, :post_id)
+    params.require(:my_select).permit(:title, :body)
   end
 end
