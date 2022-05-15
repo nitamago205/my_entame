@@ -68,3 +68,5 @@ gem 'image_processing', '~> 1.2'
 gem 'ransack'
 
 gem 'devise-i18n'
+
+gem 'rails-i18n'

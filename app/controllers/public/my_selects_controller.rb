@@ -21,6 +21,7 @@ class Public::MySelectsController < ApplicationController
   end
 
   def update
+    @post = Post.find(params[:post_id])
     @select = MySelect.find(params[:id])
     if @select.update(my_select_params)
       redirect_to post_path(@select.post_id), notice: "マイセレクトを更新しました。"

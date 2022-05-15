@@ -19,6 +19,7 @@ class Public::PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
+    @genres = Genre.all
 
     @post.rate = 0 if @post.rate.blank?
     if @post.save
@@ -35,6 +36,7 @@ class Public::PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
+    @genres = Genre.all
     if @post.update(post_params)
       redirect_to post_path(@post), notice: "投稿を更新しました。"
     else
@@ -45,7 +47,7 @@ class Public::PostsController < ApplicationController
   def destroy
     @post = Post.find(params[:id])
     if @post.destroy
-      redirect_to user_path(current_user)
+      redirect_to user_path(current_user), notice: "投稿を削除しました。"
     else
       render :edit
     end

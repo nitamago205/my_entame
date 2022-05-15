@@ -6,3 +6,13 @@ ja:
       previous: "&lsaquo; 前"
       next: "次 &rsaquo;"
       truncate: "..."
+
+  activerecord:
+    attributes:
+      post:
+        title: タイトル
+        body: 本文
+        genre: ジャンル
+      my_select:
+        title: タイトル
+        body: 本文
