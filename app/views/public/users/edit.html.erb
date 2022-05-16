@@ -1,28 +1,28 @@
 <div class='container'>
   <div class='row'>
-    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-    <h2>ユーザー情報編集</h2>
-    <%= form_with model:@user, local:true do |f| %>
-      <div class="form-group">
-        <%= f.label "プロフィール画像" %>
-        <%= f.file_field :profile_image, class: "form-control-file user_image", accept: 'image/*' %>
-      </div>
-      <div class="form-group">
-        <%= f.label "名前" %>
-        <%= f.text_field :name, class: "form-control name" %>
-      </div>
-      
-      <div class="form-group">
-        <%= f.label "メールアドレス" %>
-        <%= f.email_field :email, class: "form-control email" %>
-      </div>
-     
-      <div class="form-group">
-        <%= f.submit "変更内容を保存", class: 'btn btn-success' %>
-      </div>
-      <div>
-        <%= link_to "退会する", users_confirm_path, class: "btn btn-danger" %>
-      </div>
-    <% end %>
+    <h2 class="m-3 bg-light">ユーザー情報編集</h2>
   </div>
+  <%= form_with model:@user, local:true do |f| %>
+  <%= render 'layouts/error_messages', model: f.object %>
+    <div class="form-group">
+      <%= f.label "プロフィール画像" %>
+      <%= f.file_field :profile_image, class: "form-control-file user_image", accept: 'image/*' %>
+    </div>
+    <div class="form-group">
+      <%= f.label "ユーザー名" %>
+      <%= f.text_field :name, class: "form-control name" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label "メールアドレス" %>
+      <%= f.email_field :email, class: "form-control email" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.submit "変更内容を保存", class: 'btn btn-success' %>
+    </div>
+    <div>
+      <%= link_to "退会する", users_confirm_path, class: "btn btn-danger" %>
+    </div>
+  <% end %>
 </div>

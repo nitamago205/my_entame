@@ -9,6 +9,9 @@ ja:
 
   activerecord:
     attributes:
+      user:
+        name: ユーザー名
+        email: メールアドレス
       post:
         title: タイトル
         body: 本文
