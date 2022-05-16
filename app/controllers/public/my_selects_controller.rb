@@ -1,4 +1,6 @@
 class Public::MySelectsController < ApplicationController
+  before_action :authenticate_user!
+  before_action :ensure_correct_user
   def new
     @post = Post.find(params[:post_id])
     @select = MySelect.new
@@ -42,4 +44,12 @@ class Public::MySelectsController < ApplicationController
   def my_select_params
     params.require(:my_select).permit(:title, :body)
   end
+
+  def ensure_correct_user
+    @post = Post.find(params[:post_id])
+    unless @post.user == current_user
+      redirect_to posts_path, notice: "権限がありません。"
+    end
+  end
+
 end

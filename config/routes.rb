@@ -26,7 +26,6 @@ Rails.application.routes.draw do
   scope module: "public" do
       root to: "homes#top"
       get "about" => "homes#about", as: "about"
-      # post "/homes/guest_sign_in" => "homes#guest_sign_in"
       get "/users/confirm" => "users#confirm" #退会確認画面の表示
       patch "/users/out" => "users#out" #退会フラグを切り替える
       get "/genre/:id" => "genres#show"

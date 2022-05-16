@@ -1,4 +1,7 @@
 class Public::PostsController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  before_action :ensure_correct_user, only: [:edit, :update, :destroy]
+
   def index
     @q = Post.ransack(params[:q])
     @posts = @q.result(distinct: true).page(params[:page]).per(10)
@@ -59,5 +62,11 @@ class Public::PostsController < ApplicationController
     params.require(:post).permit(:title, :body, :rate, :genre_id)
   end
 
+  def ensure_correct_user
+    @post = Post.find(params[:id])
+    unless @post.user == current_user
+      redirect_to posts_path, notice: "権限がありません。"
+    end
+  end
 
 end

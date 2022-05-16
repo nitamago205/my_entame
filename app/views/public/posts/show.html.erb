@@ -26,7 +26,12 @@
       <tr>
         <td>いいね数</td>
         <td id="favorite_buttons_<%= @post.id %>">
-          <%= render "public/favorites/btn", post: @post %>
+          <% if user_signed_in? %>
+            <%= render "public/favorites/btn", post: @post %>
+          <% else %>
+            <i class="fas fa-heart" aria-hidden="true"></i>
+            <%= @post.favorites.count %>
+          <% end %>
         </td>
       </tr>
       <tr>

@@ -20,9 +20,13 @@
         <td><%= link_to post.title,post, class: "post_#{post.id}" %></td>
         <td><%= post.genre.genre_name %></td>
         <td id="favorite_buttons_<%= post.id %>">
-          <%= render "public/favorites/btn", post: post %>
+          <% if user_signed_in? %>
+            <%= render "public/favorites/btn", post: post %>
+          <% else %>
+            <i class="fas fa-heart" aria-hidden="true"></i>
+            <%= post.favorites.count %>
+          <% end %>
         </td>
-        <!--<td><%#= render "post_comments/counter", post: post %></td>-->
         <td><%= render "public/posts/static_rate", post: post %></td>
       </tr>
     <% end %>
