@@ -1,10 +1,18 @@
 class Public::UsersController < ApplicationController
+  before_action :authenticate_user!, only: [:edit, :update, :confirm, :out]
+  before_action :ensure_correct_user, only: [:edit, :update, :confirm, :out]
+  before_action :ensure_normal_user, only: [:out, :update]
+
   def index
-    @users = User.where(is_deleted: false).page(params[:page]).per(10)
+    @q = User.ransack(params[:q])
+    @users = @q.result(distinct: true).where(is_deleted: false).page(params[:page]).per(10)
   end
 
   def show
     @user = User.find(params[:id])
+    @q = @user.posts.ransack(params[:q])
+    @posts = @q.result(distinct: true).page(params[:page]).per(10)
+    @genres = Genre.all
   end
 
   def edit
@@ -35,9 +43,20 @@ class Public::UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :profile_image, :is_deleted)
+    params.require(:user).permit(:name, :email, :profile_image, :is_deleted)
   end
 
+  def ensure_correct_user
+    @user = User.find(params[:id])
+    unless @user == current_user
+      redirect_to posts_path, notice: "権限がありません。"
+    end
+  end
 
+  def ensure_normal_user
+    if current_user.email == 'guest@example.com'
+      redirect_to root_path, alert: 'ゲストユーザーはユーザー情報の編集、退会ができません。'
+    end
+  end
 
 end

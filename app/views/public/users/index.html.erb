@@ -2,5 +2,15 @@
   <div class="row">
     <h3 class="my-5 bg-light">ユーザー一覧</h3>
   </div>
-  <%= render 'index',users: @users %>
+  <div class="row">
+    <%= search_form_for @q do |f| %>
+      <%= f.label :name, "ユーザー名検索" %>
+      <%= f.search_field :name_cont %>
+      <%= f.submit "検索" %>
+    <% end %>
+  </div>
+  <div class="row">
+    <%= sort_link(@q, :created_at, "古い順/新しい順") %>
+    <%= render 'index', users: @users %>
+  </div>
 </div>

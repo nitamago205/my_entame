@@ -1,28 +1,26 @@
-<div class="row mb-5">
-    <table class="table table-border table-hover">
-      <thead>
-        <tr class="bg-light">
-          <th>会員ID</th>
-          <th>ユーザー名</th>
-          <th></th>
-          <th></th>
+  <table class="table table-border table-hover">
+    <thead>
+      <tr class="bg-light">
+        <th>会員ID</th>
+        <th>ユーザー名</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= user.id %></td>
+          <td>
+            <%= link_to user_path(user) do %>
+              <%= image_tag user.get_profile_image, size:'30x30' %>
+              <%= user.name %>
+            <% end %>
+          </td>
+          <td>フォロー数: <%= link_to user.followings.count, user_followings_path(user) %></td>
+          <td>フォロワー数: <%= link_to user.followers.count, user_followers_path(user) %></td>
         </tr>
-      </thead>
-      <tbody>
-        <% @users.each do |user| %>
-          <tr>
-            <td><%= user.id %></td>
-            <td>
-              <%= link_to user_path(user) do %>
-                <%= image_tag user.get_profile_image, size:'30x30' %>
-                <%= user.name %>
-              <% end %>
-            </td>
-            <td>フォロー数: <%= link_to user.followings.count, user_followings_path(user) %></td>
-            <td>フォロワー数: <%= link_to user.followers.count, user_followers_path(user) %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-    <%= paginate @users %>
-</div>
+      <% end %>
+    </tbody>
+  </table>
+  <%= paginate @users %>

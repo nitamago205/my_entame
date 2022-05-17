@@ -1,26 +1,17 @@
 class Public::PostsController < ApplicationController
-  def top
-  end
-
-  def about
-  end
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  before_action :ensure_correct_user, only: [:edit, :update, :destroy]
 
   def index
-    if params[:latest]
-     @posts = Post.latest
-    elsif params[:old]
-     @posts = Post.old
-    elsif params[:star_count]
-     @posts = Post.star_count
-    else
-     @posts = Post.all
-    end
-
+    @q = Post.ransack(params[:q])
+    @posts = @q.result(distinct: true).page(params[:page]).per(10)
+    @genres = Genre.all
   end
 
   def show
     @post = Post.find(params[:id])
     @selects = MySelect.where(post_id: @post.id)
+    @post_comment = PostComment.new
   end
 
   def new
@@ -31,6 +22,7 @@ class Public::PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
+    @genres = Genre.all
 
     @post.rate = 0 if @post.rate.blank?
     if @post.save
@@ -47,6 +39,7 @@ class Public::PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
+    @genres = Genre.all
     if @post.update(post_params)
       redirect_to post_path(@post), notice: "投稿を更新しました。"
     else
@@ -57,7 +50,7 @@ class Public::PostsController < ApplicationController
   def destroy
     @post = Post.find(params[:id])
     if @post.destroy
-      redirect_to user_path(current_user)
+      redirect_to user_path(current_user), notice: "投稿を削除しました。"
     else
       render :edit
     end
@@ -67,6 +60,13 @@ class Public::PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:title, :body, :rate, :genre_id)
+  end
+
+  def ensure_correct_user
+    @post = Post.find(params[:id])
+    unless @post.user == current_user
+      redirect_to posts_path, notice: "権限がありません。"
+    end
   end
 
 end
