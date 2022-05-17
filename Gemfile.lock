@@ -88,6 +88,10 @@ GEM
       warden (~> 1.2.3)
     devise-i18n (1.10.2)
       devise (>= 4.8.0)
+    dotenv (2.7.6)
+    dotenv-rails (2.7.6)
+      dotenv (= 2.7.6)
+      railties (>= 3.2)
     enum_help (0.0.19)
       activesupport (>= 3.0.0)
     erubi (1.10.0)
@@ -134,14 +138,14 @@ GEM
     mini_portile2 (2.8.0)
     minitest (5.15.0)
     msgpack (1.5.1)
+    mysql2 (0.5.4)
     nio4r (2.5.8)
     nokogiri (1.13.4)
       mini_portile2 (~> 2.8.0)
       racc (~> 1.4)
     orm_adapter (0.5.0)
     public_suffix (4.0.7)
-    puma (5.6.4)
-      nio4r (~> 2.0)
+    puma (3.12.6)
     racc (1.6.0)
     rack (2.2.3)
     rack-proxy (0.7.2)
@@ -256,13 +260,15 @@ DEPENDENCIES
   capybara (>= 3.26)
   devise
   devise-i18n
+  dotenv-rails
   enum_help
   image_processing (~> 1.2)
   jbuilder (~> 2.7)
   jquery-rails
   kaminari (~> 1.2.1)
   listen (~> 3.3)
-  puma (~> 5.0)
+  mysql2
+  puma (~> 3.11)
   rails (~> 6.1.5)
   rails-i18n
   ransack
