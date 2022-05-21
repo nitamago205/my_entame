@@ -13,7 +13,7 @@
     <% posts.each do |post| %>
       <tr>
         <td><%= link_to(post.user) do %>
-          <%= image_tag post.user.get_profile_image, size:'40x40' %>
+          <%= image_tag post.user.get_profile_image, size:'40x40', class:"profile_image" %>
           <%= post.user.name %>
           <% end %>
         </td>
