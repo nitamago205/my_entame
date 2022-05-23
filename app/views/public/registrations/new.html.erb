@@ -2,7 +2,7 @@
   <div class="form-wrapper mt-5 mb-5 col-11 col-md-6 col-xl-4">
     <h4 class="form-title mb-5">新規登録</h4>
 
-    <%= form_with model: @user, url: user_registration_path, class: 'text-left mb-5' do |f| %>
+    <%= form_with model: @user, url: users_sign_up_path, class: 'text-left mb-5' do |f| %>
       <%= render "public/shared/error_messages", resource: resource %>
 
       <div class="field">

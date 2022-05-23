@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  
+  devise_scope :user do
+    post 'users/sign_up' => 'public/registrations#create'
+    post 'users/guest_sign_in' => 'public/sessions#guest_sign_in'
+  end
   # 管理者用
   # URL /admin/sign_in ...
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
@@ -11,9 +16,7 @@ Rails.application.routes.draw do
     sessions: "public/sessions"
   }
 
-  devise_scope :user do
-    post 'users/guest_sign_in' => 'public/sessions#guest_sign_in'
-  end
+
 
   namespace :admin do
       resources :genres, only: [:index, :create, :edit, :update, :destroy]
