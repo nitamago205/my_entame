@@ -51,3 +51,21 @@ footer {
     border-top: 1px solid #DDDDDD;
     position: relative;
 }
+
+.form-wrapper {
+    display: inline-block;
+    width: 40%;
+    background: #fff;
+    padding: 3% 5%;
+    box-shadow: 2px 2px 4px rgba(0,0,0,0.12);
+}
+
+.form-wrapper .form-title {
+    color: #0c6794;
+    font-weight: bold;
+    text-align: center;
+    font-size: 1.7rem;
+    border-left: solid 6px #7ddae6;
+    width: 40%;
+    margin: 0 auto;
+}
