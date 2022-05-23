@@ -1,27 +1,27 @@
-<div class='container'>
-  <div class='row'>
-    <h2 class="my-5 bg-light">投稿一覧</h2>
-  </div>
-  <div class="row">
-    <% if user_signed_in? %>
-      <%= link_to new_post_path, class: "text-dark mb-2" do %>
-        <i class="fas fa-plus"></i> 新規投稿登録
+<div class="text-center mt-5 mb-5">
+  <h3 class="heading col-10 col-md-4 col-xl-3">投稿一覧</h2>
+  <div class="form-wrapper mt-3 mb-5 col-12 col-md-11 col-xl-9">
+      <% if user_signed_in? %>
+        <div class="new_post_column mb-3">
+          <%= link_to new_post_path, class: "text-dark mb-2" do %>
+            <i class="fas fa-plus"></i> 新規投稿登録
+          <% end %>
+        </div>
       <% end %>
-    <% end %>
-  </div>
-  <div class="row">
-    <%= search_form_for @q do |f| %>
-      <%= f.label :title, "投稿タイトル検索" %>
-      <%= f.search_field :title_cont %>
-
-      <%= f.label :genre_id, "ジャンル" %>
-      <%= f.collection_select :genre_id_eq, @genres, :id, :genre_name, include_blank: '指定なし' %>
-      <%= f.submit "検索" %>
-    <% end %>
-  </div>
-  <div class="row">
-      <%= sort_link(@q, :created_at, "古い順/新しい順") %> |
-      <%= sort_link(@q, :rate, "レート低い順/高い順") %>
-      <%= render 'index', posts: @posts %>
+    <div class="form-group">
+      <%= search_form_for @q do |f| %>
+        <div class="search_form col-10 col-md-5 col-xl-4">
+          <%= f.search_field :title_cont, placeholder: "投稿タイトル検索", class: 'form-control' %>
+        </div>
+          <%= f.label :genre_id, "ジャンル" %>
+          <%= f.collection_select :genre_id_eq, @genres, :id, :genre_name, include_blank: '指定なし' %>
+          <%= f.submit "検索", class: "btn btn-info ml-3 mb-1" %>
+      <% end %>
+    </div>
+    <div class="row">
+        <%= sort_link(@q, :created_at, "古い順/新しい順") %> |
+        <%= sort_link(@q, :rate, "レート低い順/高い順") %>
+        <%= render 'index', posts: @posts %>
+    </div>
   </div>
 </div>

@@ -82,3 +82,25 @@ footer {
 .search_form {
   display: inline-block;
 }
+
+.new_post_column {
+    position: relative;
+    display: inline-block;
+    padding: 15px 20px 15px 40px;
+    color: #ffffff;
+    border-radius: 35px 0 0 35px;
+    background: orange;
+    font-weight: bold;
+}
+
+.new_post_column:before {
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    transform: translateY(-50%);
+    content: '';
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: #ffffff;
+}
