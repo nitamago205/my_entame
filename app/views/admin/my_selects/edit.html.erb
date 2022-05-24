@@ -1,5 +1,6 @@
 <div class="container">
   <%= form_with model:[:admin, @post, @select] do |f| %>
+    <%= render 'layouts/error_messages', model: f.object %>
     <div class="row">
       <h3 class="m-3 bg-light">マイセレクト編集</h3>
     </div>

@@ -24,9 +24,9 @@
     <th>ステータス</th>
     <th>
       <% if @user.is_deleted == false %>
-        <div class="col-6 text-success">有効</div>
+        <div class="text-success">有効</div>
       <% elsif %>
-        <div class="col-6 text-danger">退会</div>
+        <div class="text-danger">退会</div>
       <% end %>
     </th>
   </tr>

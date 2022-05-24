@@ -5,30 +5,31 @@
     </h3>
   </div>
   <%= form_with model: [:admin,@user] do |f| %>
-  <div class="field row">
+    <%= render 'layouts/error_messages', model: f.object %>
+    <div class="field row">
       <div class="col-2"><%= f.label :user_id, "会員ID" %></div>
       <div class="col-6"><%= @user.id %></div>
     </div>
-    
+
     <div class="field row">
         <div class="col-2"><%= f.label "プロフィール画像" %></div>
         <div class="col-6">
           <%= f.file_field :profile_image, class: "form-control-file user_image", accept: 'image/*' %>
         </div>
     </div>
-    
+
     <div class="field row">
       <div class="col-2"><%= f.label :name, "名前" %></div>
       <div class="col-6 form-inline">
         <%= f.text_field :name, class: "form-control mr-2 mb-2" %>
       </div>
     </div>
-    
+
     <div class="field row">
       <div class="col-2"><%= f.label :email, "メールアドレス" %></div>
       <div class="col-6"><%= f.email_field :email, autocomplete: "email", class: "form-control mb-2" %></div>
     </div>
-    
+
     <div class="field row">
       <div class="col-2"><%= f.label :is_deleted, "会員ステータス" %></div>
       <div class="col-6">
