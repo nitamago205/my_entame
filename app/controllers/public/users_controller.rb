@@ -11,7 +11,7 @@ class Public::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @q = @user.posts.ransack(params[:q])
-    @posts = @q.result(distinct: true).page(params[:page]).per(10)
+    @posts = @q.result(distinct: true).page(params[:page]).per(10).order(created_at: "DESC")
     @genres = Genre.all
   end
 

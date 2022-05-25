@@ -1,0 +1,111 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+body {
+  background-image: image-url("playstation-pattern.png");
+}
+
+.pagination>li>a {
+  border: none;     /*枠線をなくす*/
+  color: #696969;   /*文字の色を変える*/
+}
+
+/* 表示しているページ番号のデザイン */
+.pagination>.active>a {
+  background: #93c9ff;     /*背景の色を変える*/
+  border-radius: 15px;     /*角を丸くする*/
+}
+
+/*ホバー時のデザイン*/
+.pagination>li>a:hover {
+  border-radius: 15px;    /*角を丸くする*/
+}
+
+.navbar {
+  background-color: #38b6ff;
+}
+
+.profile_image {
+  border-radius: 50%;
+}
+
+img {
+    max-width: 100%;
+}
+
+footer {
+    margin-top: 10%;
+    background-color: #fff;
+    border-top: 1px solid #DDDDDD;
+    position: relative;
+}
+
+.form-wrapper {
+    display: inline-block;
+    width: 40%;
+    background: #fff;
+    padding: 3% 5%;
+    box-shadow: 2px 2px 4px rgba(0,0,0,0.12);
+}
+
+.form-wrapper .form-title {
+    color: #0c6794;
+    font-weight: bold;
+    text-align: center;
+    font-size: 1.7rem;
+    border-left: solid 6px #7ddae6;
+    width: 40%;
+    margin: 0 auto;
+}
+
+.heading {
+  background-color: white;
+  box-shadow: 0px 0px 0px 5px white;
+  border: dashed 2px #17a2b8;
+  padding: 0.2em 0.5em;
+  width: 30%;
+  margin: 2% auto
+}
+
+.sub_heading {
+  padding: .5em .75em;
+  border-bottom: 3px solid #17a2b8;
+}
+
+.search_form {
+  display: inline-block;
+}
+
+.new_post_column {
+    position: relative;
+    display: inline-block;
+    padding: 15px 20px 15px 40px;
+    color: #ffffff;
+    border-radius: 35px 0 0 35px;
+    background: orange;
+    font-weight: bold;
+}
+
+.new_post_column:before {
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    transform: translateY(-50%);
+    content: '';
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: #ffffff;
+}

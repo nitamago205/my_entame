@@ -29,7 +29,7 @@
       <tbody>
         <% @posts.each do |post| %>
           <tr>
-            <td><%= link_to(post.user) do %>
+            <td><%= link_to admin_user_path(post.user) do %>
               <%= image_tag post.user.get_profile_image, size:'50x50' %>
               <%= post.user.name %>
               <% end %>
@@ -37,11 +37,11 @@
             <td><%= link_to post.title, admin_post_path(post), class: "post_#{post.id}" %></td>
             <td><%= post.genre.genre_name %></td>
             <td><i class="fas fa-heart"></i>︎<%= post.favorites.count %></td>
-            <!--<td><%#= render "post_comments/counter", post: post %></td>-->
             <td><%= render "public/posts/static_rate", post: post %></td>
           </tr>
         <% end %>
       </tbody>
     </table>
+    <%= paginate @posts %>
   </div>
 </div>

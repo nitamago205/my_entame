@@ -2,27 +2,25 @@
   <div class='row'>
     <div class='col-md-3'>
       <div class = "row">
-        <h2 class="my-4 bg-light">ユーザー情報</h2>
+        <h3 class="heading my-4 w-100 text-center">ユーザー情報</h2>
       </div>
       <%= render 'info', user: @user %>
     </div>
 
-    <div class='col-md-8 offset-md-1'>
+    <div class='form-wrapper col-md-8 offset-md-1 mt-5'>
       <div class="row">
-        <h3 class="my-4 bg-light"><%= @user.name %>の投稿一覧</h3>
+        <h3 class="sub_heading mb-4 ml-2"><%= @user.name %>の投稿一覧</h3>
       </div>
-      <div class="row">
-        <% if current_user == @user %>
+      <% if current_user == @user %>
+        <div class="new_post_column mb-3">
           <%= link_to new_post_path, class: "text-dark mb-2" do %>
             <i class="fas fa-plus"></i> 新規投稿登録
           <% end %>
-        <% end %>
-      </div>
+        </div>
+      <% end %>
       <div class="row">
         <%= search_form_for @q, url: user_path  do |f| %>
-          <%= f.label :title, "投稿タイトル検索" %>
-          <%= f.search_field :title_cont %>
-
+          <%= f.search_field :title_cont, placeholder: "投稿タイトル検索" %>
           <%= f.label :genre_id, "ジャンル" %>
           <%= f.collection_select :genre_id_eq, @genres, :id, :genre_name, include_blank: '指定なし' %>
           <%= f.submit "検索" %>

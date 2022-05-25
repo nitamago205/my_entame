@@ -1,3 +1,151 @@
 // Place all the styles related to the public/homes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.main-visual {
+  width: 100%; /* 横幅いっぱい */
+  height: 56vw;
+  background-image: image-url("house.png");
+  background-size: cover; /* 縦横比を維持したまま背景領域を埋め尽くす */
+  background-position: center; /* 背景画像を中央に配置 */
+}
+
+.main-visual-content {
+  width: 40%; /* 横幅40% */
+  height: -webkit-fill-available; /* 親の高さに揃える */
+  background-color: rgba(255,255,255,0.8); /* 背景色を半透明の白にする */
+  text-align: center; /* 文字を中央揃えにする */
+}
+
+.main-visual-text {
+  margin: 20% auto;
+  font-weight: bold;
+  font-size: 1.3rem;
+  width: 90%;
+}
+
+.worries-img-area .worries-img {
+    width: 100%;
+    padding: 5%;
+}
+
+.worries-img-area {
+    background-color: #a4f2c5;
+}
+
+.worries-area {
+    background: #fff;
+    display: flex;
+    align-items: center;
+}
+
+.worries-title {
+    margin-top: 5%;
+    font-size: 35px;
+    color: #0b8751;
+    position: relative;
+    font-weight: bold;
+}
+
+.worries-title:after {
+    display: block;
+    content: "";
+    width: 100px;
+    height: 5px;
+    background: #aaaaaa;
+    margin: 10px auto 30px;
+}
+
+.worries-area .worries-list {
+    margin: 20% auto;
+    width: 90%;
+}
+
+.worries_check {
+  color: #00CCCC;
+}
+
+.worries-area .worries-list li {
+    list-style: none;
+    -webkit-text-decoration: underline solid red;
+    text-decoration: underline solid red;
+    margin: 10% 0;
+    @media screen and (min-width: 1000px) {
+      list-style: none;
+      margin: 13% 0;
+      -webkit-text-decoration: underline solid red;
+      text-decoration: underline solid red;
+      font-size: 1.3rem;
+  }
+}
+
+.worries-area .fadein-left.active {
+    opacity: 1;
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+}
+
+.worries-area .worries-item {
+    position: relative;
+    line-height: 1.4;
+    font-weight: bold;
+}
+
+.settle-title {
+    margin: 5% auto;
+    font-size: 1.5rem;
+    font-weight: bold;
+    width: 35%;
+    background-color: #38b6ff;
+    border-radius: 50%;
+}
+
+.step-area-title .title-num {
+    font-size: 3rem;
+    color: #FF0000;
+}
+
+.settle-area .settle {
+    background: #fff;
+    box-shadow: 2px 2px 4px rgba(0,0,0,0.12);
+    height: 100%;
+}
+
+.settle-area .settle .settle-heading {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 5% 0;
+}
+
+.step-area .step {
+    background: #fff;
+    width: 80%;
+    margin: auto;
+    box-shadow: 2px 2px 4px rgba(0,0,0,0.12);
+    height: 100%;
+}
+
+.step-area-title {
+    margin: 5% auto 2%;
+    font-size: 1.5rem;
+    color: #00CCCC;
+    font-weight: bold;
+    border-bottom: 3px solid #00CCCC;
+    width: 30%;
+}
+
+.step-area .step-title {
+    color: #00CCCC;
+    font-weight: bold;
+    font-size: 1.3rem;
+    padding-top: 5%;
+    border-bottom: 3px solid #00CCCC;
+    width: 20%;
+    margin: 0 auto;
+}
+
+.step-area .step-copy {
+    font-size: 1.3rem;
+    margin-top: 3%;
+    font-weight: bold;
+}

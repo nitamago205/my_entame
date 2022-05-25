@@ -1,16 +1,17 @@
-<div class="container">
-  <div class="row">
-    <h3 class="my-5 bg-light">ユーザー一覧</h3>
-  </div>
-  <div class="row">
-    <%= search_form_for @q do |f| %>
-      <%= f.label :name, "ユーザー名検索" %>
-      <%= f.search_field :name_cont %>
-      <%= f.submit "検索" %>
-    <% end %>
-  </div>
-  <div class="row">
-    <%= sort_link(@q, :created_at, "古い順/新しい順") %>
-    <%= render 'index', users: @users %>
+<div class="text-center mt-5 mb-5">
+  <h3 class="heading col-10 col-md-4 col-xl-3">ユーザー一覧</h3>
+  <div class="form-wrapper mt-3 mb-5 col-12 col-md-11 col-xl-9">
+    <div class="form-group">
+      <%= search_form_for @q do |f| %>
+        <div class="search_form col-8 col-md-5 col-xl-4">
+          <%= f.search_field :name_cont, placeholder: "ユーザー名検索", class: 'form-control' %>
+        </div>
+        <%= f.submit "検索", class: "btn btn-info ml-3 mb-1" %>
+      <% end %>
+    </div>
+    <div class="row">
+      <%= sort_link(@q, :created_at, "古い順/新しい順") %>
+      <%= render 'index', users: @users %>
+    </div>
   </div>
 </div>

@@ -1,28 +1,28 @@
-<div class='container'>
-  <div class='row'>
-    <h2 class="m-3 bg-light">ユーザー情報編集</h2>
+<div class='text-center mt-5 mb-5'>
+  <div class="form-wrapper mt-5 mb-5 col-11 col-md-6 col-xl-5">
+    <h2 class="form-title mb-5">ユーザー情報編集</h2>
+    <%= form_with model:@user, local:true, class: 'text-left mb-5' do |f| %>
+      <%= render 'layouts/error_messages', model: f.object %>
+      <div class="form-group">
+        <%= f.label "プロフィール画像" %>
+        <%= f.file_field :profile_image, class: "form-control-file user_image", accept: 'image/*' %>
+      </div>
+      <div class="form-group">
+        <%= f.label "ユーザー名" %>
+        <%= f.text_field :name, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label "メールアドレス" %>
+        <%= f.email_field :email, class: "form-control" %>
+      </div>
+
+      <div class="form-group mt-4">
+        <%= f.submit "変更内容を保存", class: 'btn-lg btn-success btn-block' %>
+      </div>
+      <div class="text-center mt-5">
+        <%= link_to "退会する", confirm_path, class: "btn btn-danger" %>
+      </div>
+    <% end %>
   </div>
-  <%= form_with model:@user, local:true do |f| %>
-  <%= render 'layouts/error_messages', model: f.object %>
-    <div class="form-group">
-      <%= f.label "プロフィール画像" %>
-      <%= f.file_field :profile_image, class: "form-control-file user_image", accept: 'image/*' %>
-    </div>
-    <div class="form-group">
-      <%= f.label "ユーザー名" %>
-      <%= f.text_field :name, class: "form-control name" %>
-    </div>
-
-    <div class="form-group">
-      <%= f.label "メールアドレス" %>
-      <%= f.email_field :email, class: "form-control email" %>
-    </div>
-
-    <div class="form-group">
-      <%= f.submit "変更内容を保存", class: 'btn btn-success' %>
-    </div>
-    <div>
-      <%= link_to "退会する", users_confirm_path, class: "btn btn-danger" %>
-    </div>
-  <% end %>
 </div>

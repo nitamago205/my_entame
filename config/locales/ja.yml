@@ -19,3 +19,7 @@ ja:
       my_select:
         title: タイトル
         body: 本文
+      genre:
+        genre_name: ジャンル名
+      post_comment:
+        comment: コメント

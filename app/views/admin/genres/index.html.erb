@@ -5,7 +5,9 @@
   <div class="row justify-content-center">
     <div class="col-md-10">
 
+
       <%= form_with model: [:admin,@genre] do |f| %>
+        <%= render 'layouts/error_messages', model: f.object %>
         <div class="row my-4 form-group">
           <%= f.label "ジャンル名", class: "col-sm-2 col-form-label" %>
           <div class="col-sm-6">

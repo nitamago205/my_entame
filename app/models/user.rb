@@ -4,8 +4,12 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  validates :name, presence:true
-  validates :email, presence:true
+  validates :name, presence:true, length:{maximum:50}
+  validates :email, presence:true, length:{maximum:100}
+  
+  def active_for_authentication? #退会機能
+    super && (is_deleted == false)
+  end
 
   def self.guest #ゲストログイン
     find_or_create_by!(email: 'guest@example.com') do |user|

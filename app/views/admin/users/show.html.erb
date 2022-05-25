@@ -1,44 +1,60 @@
 <div class="container">
   <div class="row">
-    <h3 class="m-3 bg-light">
-      <%= @user.name %>さんの詳細
-    </h3>
+    <div class='col-md-3'>
+      <div class="row">
+        <h3 class="m-3 bg-light">
+          <%= @user.name %>さんの詳細
+        </h3>
+      </div>
+      <%= render 'info', user: @user %>
+    </div>
+
+    <div class='form-wrapper col-md-8 offset-md-1 mt-5'>
+      <div class="row">
+        <h3 class="sub_heading mb-4 ml-2"><%= @user.name %>の投稿一覧</h3>
+      </div>
+
+      <div class="row">
+        <%= search_form_for @q, url: admin_user_path(@user) do |f| %>
+          <%= f.label :title, "投稿タイトル検索" %>
+          <%= f.search_field :title_cont %>
+
+          <%= f.label :genre_id, "ジャンル" %>
+          <%= f.collection_select :genre_id_eq, @genres, :id, :genre_name, include_blank: '指定なし' %>
+          <%= f.submit "検索" %>
+        <% end %>
+      </div>
+      <%= sort_link(@q, :created_at, "古い順/新しい順") %> |
+      <%= sort_link(@q, :rate, "レート低い順/高い順") %>
+      <div class="row">
+        <table class='table table-hover table-inverse'>
+          <thead>
+            <tr>
+              <th>タイトル</th>
+              <th>ジャンル名</th>
+              <th>いいね数</th>
+              <th>コメント数</th>
+              <th>レート</th>
+              <th colspan="3"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @posts.each do |post| %>
+              <tr>
+                <td><%= link_to post.title, admin_post_path(post), class: "post_#{post.id}" %></td>
+                <td><%= post.genre.genre_name %></td>
+                <td><i class="fas fa-heart"></i>︎<%= post.favorites.count %></td>
+                <td><%= render "public/post_comments/counter", post: post %></td>
+                <td><%= render "public/posts/static_rate", post: post %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+        <%= paginate @posts %>
+      </div>
+    </div>
   </div>
-  <div class="my-3">
-    <div class="row">
-      <div class="col-2">プロフィール画像</div>
-      <div class="col-6"><%= image_tag @user.get_profile_image, size:'50x50' %></div>
-    </div>
-    <div class="row">
-      <div class="col-2">ユーザーID</div>
-      <div class="col-6"><%= @user.id %></div>
-    </div>
-    <div class="row">
-      <div class="col-2">名前</div>
-      <div class="col-6"><%= @user.name %></div>
-    </div>
-    <div class="row">
-      <div class="col-2">メールアドレス</div>
-      <div class="col-6"><%= @user.email %></div>
-    </div>
-    <div class="row">
-      <div class="col-2">ステータス</div>
-      <% if @user.is_deleted == false %>
-        <div class="col-6 text-success">有効</div>
-      <% elsif %>
-        <div class="col-6 text-danger">退会</div>
-      <% end %>
-    </div>
-    </div>
-    <div class="row my-5">
-      <div>
-        <%= link_to "編集する", edit_admin_user_path(@user.id), class: "btn btn-success mr-5" %>
-      </div>
-      <div>
-        <%= link_to "削除する", admin_user_path, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-danger" %>
-      </div>
-    </div>
-    <div>
-      <%= link_to "ユーザー一覧へ戻る", admin_users_path, class: "btn btn-primary" %>
-    </div>
 </div>
+
+
+

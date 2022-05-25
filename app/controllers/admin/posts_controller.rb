@@ -1,7 +1,7 @@
 class Admin::PostsController < ApplicationController
   def index
     @q = Post.ransack(params[:q])
-    @posts = @q.result(distinct: true).page(params[:page]).per(10)
+    @posts = @q.result(distinct: true).page(params[:page]).per(10).order(created_at: "DESC")
     @genres = Genre.all
   end
 
@@ -17,6 +17,7 @@ class Admin::PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
+    @genres = Genre.all
     if @post.update(post_params)
       redirect_to admin_post_path(@post), notice: "投稿を更新しました。"
     else
@@ -27,7 +28,7 @@ class Admin::PostsController < ApplicationController
   def destroy
     @post = Post.find(params[:id])
     if @post.destroy
-      redirect_to admin_posts_path
+      redirect_to admin_user_path(@post.user)
     else
       render :edit
     end
