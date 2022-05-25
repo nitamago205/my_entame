@@ -11,18 +11,24 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <heder>
-    <%= render 'layouts/header' %>
-  </heder>
+  <div class="footerFixed">
 
-  <body>
-    <%= flash[:notice] %>
-    <%= flash[:alert] %>
-    <%= yield %>
-  </body>
+    <heder>
+      <%= render 'layouts/header' %>
+    </heder>
 
-  <footer>
-    <div class="text-center web-copyright pt-5 pb-3">my_entame</div>
-  </footer>
+    <body>
+      <%= flash[:notice] %>
+      <%= flash[:alert] %>
+      <%= yield %>
+    </body>
+
+    <footer>
+      <div class="text-center web-copyright pt-5 pb-3">
+        Copyright © my_entame
+      </div>
+    </footer>
+
+  </div>
 
 </html>
