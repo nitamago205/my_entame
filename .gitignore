@@ -39,4 +39,4 @@
 yarn-debug.log*
 .yarn-integrity
 /.env
-/my_entame/db/seeds.rb
+/db/seeds.rb
