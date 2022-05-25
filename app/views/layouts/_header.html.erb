@@ -1,8 +1,14 @@
 <nav class="navbar navbar-expand-lg navbar-dark shadow-sm">
     <div class="container">
-      <a class="navbar-brand" href="/">
-        <%= image_tag 'my_entame_logo3.png', size: "180x30" %>
-      </a>
+      <% if admin_signed_in? %>
+        <a class="navbar-brand">
+          <%= image_tag 'my_entame_logo3.png', size: "180x30" %>
+        </a>
+      <% else %>
+        <a class="navbar-brand" href="/">
+          <%= image_tag 'my_entame_logo3.png', size: "180x30" %>
+        </a>
+      <% end %>
       <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation" >
         <span class="navbar-toggler-icon"></span>
       </button>

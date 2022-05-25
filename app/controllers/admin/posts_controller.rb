@@ -1,7 +1,7 @@
 class Admin::PostsController < ApplicationController
   def index
     @q = Post.ransack(params[:q])
-    @posts = @q.result(distinct: true).page(params[:page]).per(10)
+    @posts = @q.result(distinct: true).page(params[:page]).per(10).order(created_at: "DESC")
     @genres = Genre.all
   end
 
