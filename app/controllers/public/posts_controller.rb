@@ -11,6 +11,7 @@ class Public::PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @selects = MySelect.where(post_id: @post.id)
+    @post_comments = @post.post_comments.page(params[:page]).per(10).order(created_at: "DESC")
     @post_comment = PostComment.new
   end
 
