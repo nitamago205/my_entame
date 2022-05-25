@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
   devise_scope :user do
     post 'users/sign_up' => 'public/registrations#create'
     post 'users/guest_sign_in' => 'public/sessions#guest_sign_in'
@@ -28,14 +28,13 @@ Rails.application.routes.draw do
 
   scope module: "public" do
       root to: "homes#top"
-      get "/users/confirm" => "users#confirm" #退会確認画面の表示
-      patch "/users/out" => "users#out" #退会フラグを切り替える
+      get "/users/:id/confirm" => "users#confirm", as: "confirm" #退会確認画面の表示
+      patch "/users/:id/out" => "users#out", as: "out" #退会フラグを切り替える
       get "/genre/:id" => "genres#show"
       resources :users, only: [:index, :show, :edit, :update] do
         resource :relationships, only: [:create, :destroy]
       	get 'followings' => 'relationships#followings', as: 'followings'
       	get 'followers' => 'relationships#followers', as: 'followers'
-      	get "genre" => "genres#user_show"
       end
       resources :posts do
         resources :post_comments, only: [:create, :destroy]
