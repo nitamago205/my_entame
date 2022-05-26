@@ -43,7 +43,7 @@
               <% end %>
             </li>
             <li class="nav-item">
-              <%= link_to posts_path, class: "nav-link text-light text-nowrap btn btn-primary mr-1 mb-1" do %>
+              <%= link_to posts_path, class: "nav-link text-light btn btn-primary mr-1 mb-1" do %>
                 <i class="fas fa-list"></i> 投稿一覧
               <% end %>
             </li>
@@ -53,7 +53,12 @@
               <% end %>
             </li>
             <li class="nav-item">
-              <%= link_to destroy_user_session_path, method: :delete, class:"nav-link text-light text-nowrap btn btn-primary mr-1 mb-1" do %>
+              <%= link_to new_post_path, class: "nav-link text-light btn btn-primary mr-1 mb-1" do %>
+                <i class="fas fa-paper-plane"></i> 新規投稿
+              <% end %>
+            </li>
+            <li class="nav-item">
+              <%= link_to destroy_user_session_path, method: :delete, class:"nav-link text-light btn btn-primary mr-1 mb-1" do %>
                 <i class="fas fa-sign-out-alt"></i> ログアウト
               <% end %>
             </li>

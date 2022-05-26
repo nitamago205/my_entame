@@ -11,13 +11,6 @@
       <div class="row">
         <h3 class="sub_heading mb-4 ml-2"><%= @user.name %>の投稿一覧</h3>
       </div>
-      <% if current_user == @user %>
-        <div class="new_post_column mb-3">
-          <%= link_to new_post_path, class: "text-dark mb-2" do %>
-            <i class="fas fa-plus"></i> 新規投稿登録
-          <% end %>
-        </div>
-      <% end %>
       <div class="row">
         <%= search_form_for @q, url: user_path  do |f| %>
           <%= f.search_field :title_cont, placeholder: "投稿タイトル検索" %>
