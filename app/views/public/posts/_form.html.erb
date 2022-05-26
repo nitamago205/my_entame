@@ -37,8 +37,10 @@
   <div class="form-group">
     <% if action_name == "new" %>
       <%= f.submit "投稿する", class: 'btn btn-success' %>
-    <% else %>
+    <% elsif action_name == "edit" %>
       <%= f.submit "変更を保存", class: "btn btn-success" %>
+    <% else %>
+      <%= f.submit "登録する", class: "btn btn-success" %>
     <% end %>
   </div>
 <% end %>
