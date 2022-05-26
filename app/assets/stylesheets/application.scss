@@ -17,6 +17,10 @@ body {
   background-image: image-url("playstation-pattern.png");
 }
 
+.error-alert {
+  color: red;
+}
+
 .pagination>li>a {
   border: none;     /*枠線をなくす*/
   color: #696969;   /*文字の色を変える*/
