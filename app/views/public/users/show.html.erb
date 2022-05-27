@@ -1,29 +1,42 @@
-<div class='main container px-5 px-sm-0'>
-  <div class='row'>
-    <div class='col-md-3'>
-      <div class = "row">
-        <h3 class="heading my-4 w-100 text-center">ユーザー情報</h2>
-      </div>
+<div class='main'>
+    <div class='mt-5'>
       <%= render 'info', user: @user %>
     </div>
 
-    <div class='form-wrapper col-md-8 offset-md-1 mt-5'>
-      <div class="row">
-        <h3 class="sub_heading mb-4 ml-2"><%= @user.name %>の投稿一覧</h3>
-      </div>
-      <div class="row">
+    <div class='user_posts container mt-5 mb-5'>
+      <div class="row search_form">
         <%= search_form_for @q, url: user_path  do |f| %>
-          <%= f.search_field :title_cont, placeholder: "投稿タイトル検索" %>
+          <%= f.search_field :title_cont, placeholder: "投稿タイトル検索", class: "post-form w-100" %>
           <%= f.label :genre_id, "ジャンル" %>
           <%= f.collection_select :genre_id_eq, @genres, :id, :genre_name, include_blank: '指定なし' %>
           <%= f.submit "検索" %>
         <% end %>
       </div>
-      <div class = "row">
+      <div class = "row search_form">
         <%= sort_link(@q, :created_at, "古い順/新しい順") %> |
         <%= sort_link(@q, :rate, "レート低い順/高い順") %>
-        <%= render 'post_index', posts: @posts %>
+      </div>
+      <div class="tablist row nav nav-tabs" id="nav-tab" role="tablist">
+        <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">
+          <span class="font-weight-bold text-info"><i class="fas fa-list"></i>投稿</span><span class="badge badge-light"><%= @user.posts.count %></span>
+        </a>
+        <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">
+          <span class="font-weight-bold text-info"><i class="fas fa-heart"></i>いいね</span><span class="post-favorites-counter badge badge-light"><%= render "public/favorites/counter", user: @user %></span>
+        </a>
+        <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">
+          <span class="font-weight-bold text-info"><i class="fas fa-comments"></i>コメント</span><span class="badge badge-light"><%= @user.post_comments.count %></span>
+        </a>
+      </div>
+      <div class="tab-content" id="nav-tabContent">
+        <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+          <%= render "post_index" ,posts: @posts %>
+        </div>
+        <div class="favorite_posts_index tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+          <%= render "post_index" ,posts: @favorite_posts %>
+        </div>
+        <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+          <%= render "post_index" ,posts: @comment_posts %>
+        </div>
       </div>
     </div>
-  </div>
 </div>

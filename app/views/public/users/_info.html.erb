@@ -1,26 +1,37 @@
-<table class='table'>
-  <tr><%= image_tag user.get_profile_image, size:'157x157', class:"profile_image d-block mx-auto" %></tr>
-  <tr>
-    <th>ユーザー名</th>
-    <th><%= user.name %></th>
-  </tr>
-  <tr>
-    <th>
-      <div class="d-inline-block">フォロー数: </div><div class="d-inline-block"><%= link_to user.followings.count, user_followings_path(user) %></div>
-    </th>
-    <th>
-      <div class="d-inline-block">フォロワー数: </div><div class="d-inline-block"><%= link_to user.followers.count, user_followers_path(user) %></div>
-    </th>
-  </tr>
-</table>
-<div class='row'>
-  <% if user_signed_in? %>
-    <% if current_user != user %>
-      <td><%= render "public/relationships/btn", user: user %></td>
-    <% else %>
-      <%= link_to edit_user_path(user), class: "btn btn-success btn-block" do %>
-        <i class="fas fa-user-cog"></i>ユーザー情報編集
-      <% end %>
-    <% end %>
-  <% end %>
+<div class="user-status row no-gutters">
+  <div class="col-xs-12 col-md-2 text-center">
+    <div class="user-img-area pt-3 pb-3">
+      <%= image_tag user.get_profile_image, size:'157x157', class:"profile_image d-block mx-auto" %>
+    </div>
+  </div>
+  <div class="col-xs-12 col-md-1 text-center">
+      <div class="user-name">
+        <%= user.name %>
+      </div>
+  </div>
+  <div class="col-xs-12 col-md-6 text-center">
+    <div class="follow-group">
+        <div class="header-follow-text mr-5">
+          フォロー<%= link_to user.followings.count, user_followings_path(user) %>
+        </div>
+        <div class="header-follow-text">
+          フォロワー<%= link_to user.followers.count, user_followers_path(user) %>
+        </div>
+    </div>
+  </div>
+  <div class="col-xs-12 col-md-3 text-center">
+      <div class="follow-btn-group mx-auto">
+        <% if user_signed_in? %>
+          <% if current_user != user %>
+            <td><%= render "public/relationships/btn", user: user %></td>
+          <% else %>
+            <%= link_to edit_user_path(user), class: "btn btn-success" do %>
+              <i class="fas fa-user-cog"></i>ユーザー情報編集
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
+  </div>
+
 </div>
+

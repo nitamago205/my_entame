@@ -123,3 +123,9 @@ footer {
     border-radius: 50%;
     background: #ffffff;
 }
+
+.text_omit {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
