@@ -4,10 +4,8 @@ class Public::FavoritesController < ApplicationController
     @favorite = current_user.favorites.new(post_id: @post.id)
     @favorite.save
     @q = Post.ransack(params[:q])
-
-
-
-    @user = User.find(params[:user_id])
+    @user = current_user
+    # @user = User.find(params[:user_id])
     @favorite_posts = @q.result(distinct: true).joins(:favorites).where(favorites: {user_id: @user.id}).page(params[:favorite_posts_page]).per(5).order(created_at: "DESC")
   end
 
@@ -16,7 +14,8 @@ class Public::FavoritesController < ApplicationController
     @favorite = current_user.favorites.find_by(post_id: @post.id)
     @favorite.destroy
     @q = Post.ransack(params[:q])
-    @user = User.find(params[:user_id])
+    @user = current_user
+    # @user = User.find(params[:user_id])
     @favorite_posts = @q.result(distinct: true).joins(:favorites).where(favorites: {user_id: @user.id}).page(params[:favorite_posts_page]).per(5).order(created_at: "DESC")
   end
 end

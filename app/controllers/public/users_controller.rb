@@ -16,7 +16,6 @@ class Public::UsersController < ApplicationController
     # @q = @user.posts.ransack(params[:q])
     @posts = @q.result(distinct: true).where(user_id: @user).page(params[:posts_page]).per(5).order(created_at: "DESC")
     @favorite_posts = @q.result(distinct: true).joins(:favorites).where(favorites: {user_id: @user.id}).page(params[:favorite_posts_page]).per(5).order(created_at: "DESC")
-    # Post.joins(:favorites).where(favorites: {user_id: @user.id})
     @comment_posts = @q.result(distinct: true).joins(:post_comments).where(post_comments: {user_id: @user.id}).page(params[:comment_posts_page]).per(5).order(created_at: "DESC")
   end
 
