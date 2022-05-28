@@ -2,7 +2,7 @@
   <tbody>
       <% post_comments.each do |post_comment| %>
       <tr>
-        <td>
+        <td class="text_omit">
           <%= link_to user_path(post_comment.user) do %>
             <%= image_tag post_comment.user.get_profile_image, size: "30x30", class:"profile_image" %><br>
             <%= post_comment.user.name %>
