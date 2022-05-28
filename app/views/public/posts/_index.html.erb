@@ -20,7 +20,7 @@
         </td>
         <td><%= link_to post.title,post, class: "post_#{post.id}" %></td>
         <td><%= post.genre.genre_name %></td>
-        <td id="favorite_buttons_<%= post.id %>">
+        <td class="favorite_buttons_<%= post.id %>">
           <% if user_signed_in? %>
             <%= render "public/favorites/btn", post: post %>
           <% else %>

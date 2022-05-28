@@ -17,6 +17,10 @@ body {
   background-image: image-url("playstation-pattern.png");
 }
 
+.error-alert {
+  color: red;
+}
+
 .pagination>li>a {
   border: none;     /*枠線をなくす*/
   color: #696969;   /*文字の色を変える*/
@@ -118,4 +122,10 @@ footer {
     height: 15px;
     border-radius: 50%;
     background: #ffffff;
+}
+
+.text_omit {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }

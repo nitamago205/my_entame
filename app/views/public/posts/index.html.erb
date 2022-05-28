@@ -1,13 +1,6 @@
 <div class="text-center mt-5 mb-5">
   <h3 class="heading col-10 col-md-4 col-xl-3">投稿一覧</h2>
   <div class="form-wrapper mt-3 mb-5 col-12 col-md-11 col-xl-9">
-      <% if user_signed_in? %>
-        <div class="new_post_column mb-3">
-          <%= link_to new_post_path, class: "text-dark mb-2" do %>
-            <i class="fas fa-plus"></i> 新規投稿登録
-          <% end %>
-        </div>
-      <% end %>
     <div class="form-group">
       <%= search_form_for @q do |f| %>
         <div class="search_form col-10 col-md-5 col-xl-4">
