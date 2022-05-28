@@ -32,8 +32,8 @@
 
 .user-status .follow-group {
     @media screen and (min-width: 768px) {
-      margin-top: 12%;
-      margin-bottom: 5%;
+      margin-top: 7%;
+      margin-bottom: 3%;
     }
 }
 
@@ -59,4 +59,12 @@
     background: #fff;
     padding: 3% 5%;
     box-shadow: 2px 2px 4px rgba(0,0,0,12%);
+}
+
+
+.form-width {
+    @media (min-width: 1200px){
+        flex: 0 0 40%;
+        max-width: 40% !important;
+    }
 }
