@@ -14,9 +14,9 @@ class Public::UsersController < ApplicationController
 
     @q = Post.ransack(params[:q])
     # @q = @user.posts.ransack(params[:q])
-    @posts = @q.result(distinct: true).where(user_id: @user).page(params[:posts_page]).per(5).order(created_at: "DESC")
-    @favorite_posts = @q.result(distinct: true).joins(:favorites).where(favorites: {user_id: @user.id}).page(params[:favorite_posts_page]).per(5).order(created_at: "DESC")
-    @comment_posts = @q.result(distinct: true).joins(:post_comments).where(post_comments: {user_id: @user.id}).page(params[:comment_posts_page]).per(5).order(created_at: "DESC")
+    @posts = @q.result(distinct: true).where(user_id: @user).page(params[:posts_page]).per(6).order(created_at: "DESC")
+    @favorite_posts = @q.result(distinct: true).joins(:favorites).where(favorites: {user_id: @user.id}).page(params[:favorite_posts_page]).per(6).order(created_at: "DESC")
+    @comment_posts = @q.result(distinct: true).joins(:post_comments).where(post_comments: {user_id: @user.id}).page(params[:comment_posts_page]).per(6).order(created_at: "DESC")
   end
 
   def edit
