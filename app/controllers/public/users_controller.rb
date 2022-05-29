@@ -58,8 +58,9 @@ class Public::UsersController < ApplicationController
   end
 
   def ensure_normal_user
+    @user = User.find(params[:id])
     if current_user.email == 'guest@example.com'
-      redirect_to root_path, alert: 'ゲストユーザーはユーザー情報の編集、退会ができません。'
+      redirect_to user_path(@user), alert: 'ゲストユーザーはユーザー情報の編集、退会ができません。'
     end
   end
 
