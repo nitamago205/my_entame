@@ -4,10 +4,10 @@
       <%= image_tag user.get_profile_image, size:'157x157', class:"profile_image d-block mx-auto" %>
     </div>
   </div>
-  <div class="col-xs-12 col-md-3 text-center text_omit user-name">
-        <%= user.name %>
+  <div class="col-xs-12 col-md-4 text-center p-break m-auto user-name">
+    <%= user.name %>
   </div>
-  <div class="col-xs-12 col-md-6 text-center">
+  <div class="col-xs-12 col-md-6 text-center m-auto">
     <div class="follow-group">
         <div class="header-follow-text mr-5">
           フォロー<%= link_to user.followings.count, user_followings_path(user) %>
