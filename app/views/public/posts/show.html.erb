@@ -1,31 +1,26 @@
 <div class='container'>
-  <div class='row'>
-		<h2 class="my-4 bg-light">投稿詳細</h2>
-		<table class='table'>
+  <div class='flame row mt-3 test'>
+		<h2 class="heading text-center col-10 col-md-4 col-xl-3">投稿詳細</h2>
+		<table class='table col-12'>
 		  <tr>
-        <td>ユーザー名</td>
         <td>
           <%= link_to(@post.user) do %>
             <%= image_tag @post.user.get_profile_image, size:"60x60", class:"profile_image" %>
-            <%= @post.user.name %>
+            <div class="post-show-name"><%= @post.user.name %></div>
           <% end %>
         </td>
       </tr>
       <tr>
-        <td>タイトル</td>
         <td><%= @post.title %></td>
       </tr>
       <tr>
-        <td>本文</td>
         <td><%= @post.body %></td>
       </tr>
       <tr>
-        <td>ジャンル名</td>
-        <td><%= @post.genre.genre_name %></td>
+        <td>ジャンル名：<%= @post.genre.genre_name %></td>
       </tr>
       <tr>
-        <td>いいね数</td>
-        <td class="favorite_buttons_<%= @post.id %>">
+        <td class="favorite_buttons_<%= @post.id %>">いいね数：
           <% if user_signed_in? %>
             <%= render "public/favorites/btn", post: @post %>
           <% else %>
@@ -35,76 +30,75 @@
         </td>
       </tr>
       <tr>
-        <td>コメント数</td>
         <td class="post-comments-counter">
-          <%= render "public/post_comments/counter", post: @post %>
+          コメント数：<%= render "public/post_comments/counter", post: @post %>
         </td>
       </tr>
       <tr>
-        <td>レート</td>
-        <td><%= render "static_rate", post: @post %></td>
+        <td class="d-flex">
+          <div>
+            レート：
+          </div>
+          <div>
+            <%= render "static_rate", post: @post %>
+          </div>
+        </td>
       </tr>
-        <% if @post.user == current_user %>
-          <td><%= link_to '編集', edit_post_path(@post), class: "btn btn-sm btn-success edit_post_#{@post.id}" %></td>
-          <td><%= link_to '削除', @post, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_post_#{@post.id}" %></td>
-        <% end %>
+      <% if @post.user == current_user %>
+        <td>
+          <%= link_to '編集', edit_post_path(@post), class: "btn btn-sm btn-success edit_post_#{@post.id} mr-5" %>
+          <%= link_to '削除', @post, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_post_#{@post.id}" %>
+        </td>
+      <% end %>
     </table>
   </div>
-  <div>
-    <div class="row">
-      <h3 class="sub_heading mb-4 ml-2">マイセレクト一覧</h3>
-    </div>
-    <div class="row">
+
+  <div class="flame row mt-5">
+    <h4 class="sub_heading mb-2 ml-2">マイセレクト一覧</h4>
+    <div>
       <% if @post.user == current_user %>
-        <%= link_to new_post_my_select_path(@post), class: "text-dark mb-2" do %>
-          <i class="fas fa-plus"></i> 新規マイセレクト追加
-        <% end %>
+        <%= link_to "新規マイセレクト追加", new_post_my_select_path(@post), class: "btn btn-outline-info m-3" %>
       <% end %>
     </div>
-    <div class="row">
+    <div class="w-100 test-center m-auto row">
       <% if @selects.exists? %>
-        <table class='table table-hover table-inverse'>
-          <thead>
-            <tr>
-              <th>タイトル</th>
-              <th>本文</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            <% @selects.each do |select| %>
-              <tr>
-                <td><%= select.title %></td>
-                <td><%= select.body %></td>
-                 <% if @post.user == current_user %>
-                  <td>
-                    <%= link_to '編集', edit_post_my_select_path(@post, select), class: "btn btn-sm btn-success edit_post_my_select_#{select.id}" %>
-                    <%= link_to '削除', post_my_select_path(@post, select), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_post_my_select_#{select.id}" %>
-                  </td>
-                <% end %>
-              </tr>
-            <% end %>
-          </tbody>
-        </table>
-        <%= paginate @selects %>
+        <% @selects.each do |select| %>
+          <div class="w-100 mt-3">
+            <div class = "card">
+              <div class = "select-title m-1">
+                <%= select.title %>
+              </div>
+              <div class = "m-2">
+                <%= select.body %>
+              </div>
+              <% if @post.user == current_user %>
+                <div class="m-2">
+                  <%= link_to '編集', edit_post_my_select_path(@post, select), class: "btn btn-sm btn-success edit_post_my_select_#{select.id}" %>
+                  <%= link_to '削除', post_my_select_path(@post, select), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_post_my_select_#{select.id}" %>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+        <div class="mt-2"><%= paginate @selects %></div>
       <% else %>
         <p>マイセレクトはありません</p>
       <% end %>
     </div>
+  </div>
 
-    <div>
-      <div class="row">
-        <h3 class="sub_heading mb-4 ml-2">コメント</h3>
-      </div>
-      <div class="post-comments-index">
-        <%= render "public/post_comments/index", post: @post, post_comments: @post_comments %>
-      </div>
-      <span id="flash"></span> <!-- Flash message for jQuery -->
-      <div class="comments_error">
-        <%= render 'layouts/error_messages', model: @post_comment %>
-      </div>
+  <div class="flame row mt-5 mb-3">
+    <h4 class="sub_heading mt-2">コメント</h4>
+    <div class="post-comments-index w-100">
+      <%= render "public/post_comments/index", post: @post, post_comments: @post_comments %>
+    </div>
+    <span id="flash"></span> <!-- Flash message for jQuery -->
+    <div class="comments_error">
+      <%= render 'layouts/error_messages', model: @post_comment %>
+    </div>
+    <div class="col-12">
       <%= render "public/post_comments/form", post: @post, post_comment: @post_comment %>
     </div>
-
   </div>
+
 </div>

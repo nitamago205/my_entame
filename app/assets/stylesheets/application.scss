@@ -129,3 +129,18 @@ footer {
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+
+.welcome_name {
+  width: 200px;
+}
+
+.flame {
+    background: #fff;
+    padding: 3% 5%;
+    box-shadow: 2px 2px 4px rgba(0,0,0,12%);
+}
+
+.p-break {
+  overflow-wrap: break-word;
+}
+

@@ -3,7 +3,7 @@
       <%= render 'info', user: @user %>
     </div>
 
-    <div class='user_posts container mt-5 mb-5'>
+    <div class='flame container mt-5 mb-5'>
       <div class="row search_form">
         <%= search_form_for @q, url: user_path  do |f| %>
           <%= f.search_field :title_cont, placeholder: "投稿タイトル検索", class: "post-form w-100" %>

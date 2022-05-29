@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark shadow-sm">
+<nav class="navbar navbar-expand-xl navbar-dark shadow-sm">
     <div class="container">
       <% if admin_signed_in? %>
         <a class="navbar-brand">
@@ -36,7 +36,7 @@
               <% end %>
             </li>
           <% elsif user_signed_in? %>
-            <p class="text_omit col-3 text-white mr-2 my-auto text-nowrap"><small>ようこそ</small><%= current_user.name %><small>さん！</small></p>
+            <p class="welcome_name text_omit mx-col-3 text-white mr-2 my-auto text-nowrap"><small>ようこそ</small><%= current_user.name %><small>さん！</small></p>
             <li class="nav-item">
               <%= link_to user_path(current_user), class: "nav-link text-light text-nowrap btn btn-primary mr-1 mb-1" do %>
                 <i class="fas fa-user-circle"></i> マイページ

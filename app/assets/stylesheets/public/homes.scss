@@ -132,6 +132,9 @@
     font-weight: bold;
     border-bottom: 3px solid #00CCCC;
     width: 30%;
+    @media screen and (max-width: 1000px) {
+        width: 80%;
+  }
 }
 
 .step-area .step-title {
