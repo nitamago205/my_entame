@@ -16,18 +16,16 @@
           フォロワー<%= link_to user.followers.count, user_followers_path(user) %>
         </div>
     </div>
-    <div class="col-xs-12 col-md-3 text-center mw-100">
-      <div class="mx-auto">
-        <% if user_signed_in? %>
-          <% if current_user != user %>
-            <td><%= render "public/relationships/btn", user: user %></td>
-          <% else %>
-            <%= link_to edit_user_path(user), class: "btn btn-success" do %>
-              <i class="fas fa-user-cog"></i>ユーザー情報編集
-            <% end %>
+    <div class="col-xs-12 col-md-3 text-center mw-100 mx-auto mb-2">
+      <% if user_signed_in? %>
+        <% if current_user != user %>
+          <td><%= render "public/relationships/btn", user: user %></td>
+        <% else %>
+          <%= link_to edit_user_path(user), class: "btn btn-success" do %>
+            <i class="fas fa-user-cog"></i>ユーザー情報編集
           <% end %>
         <% end %>
-      </div>
+      <% end %>
    </div>
 
   </div>
