@@ -20,18 +20,24 @@
         <td>ジャンル名：<%= @post.genre.genre_name %></td>
       </tr>
       <tr>
-        <td class="favorite_buttons_<%= @post.id %>">いいね数：
-          <% if user_signed_in? %>
-            <%= render "public/favorites/btn", post: @post %>
-          <% else %>
-            <i class="fas fa-heart" aria-hidden="true"></i>
-            <%= @post.favorites.count %>
-          <% end %>
+        <td class="d-flex">
+          <div>いいね数：</div>
+          <div class="favorite_buttons_<%= @post.id %>">
+            <% if user_signed_in? %>
+              <%= render "public/favorites/btn", post: @post %>
+            <% else %>
+              <i class="fas fa-heart" aria-hidden="true"></i>
+              <%= @post.favorites.count %>
+            <% end %>
+          </div>
         </td>
       </tr>
       <tr>
-        <td class="post-comments-counter">
-          コメント数：<%= render "public/post_comments/counter", post: @post %>
+        <td class="d-flex">
+          <div>コメント数：</div>
+          <div class="post-comments-counter">
+            <%= render "public/post_comments/counter", post: @post %>
+          </div>
         </td>
       </tr>
       <tr>
