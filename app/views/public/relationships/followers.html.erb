@@ -2,9 +2,11 @@
   <div class="row">
     <h3 class="my-5 bg-light">フォローワー一覧</h3>
   </div>
-  <% if @users.exists? %>
-    <%= render 'public/users/index',users: @users %>
-  <% else %>
-    <p>ユーザーはいません</p>
-  <% end %>
+  <div class="flame container text-center mt-5 mb-5">
+    <% if @users.exists? %>
+      <%= render 'public/users/index',users: @users %>
+    <% else %>
+      <p>ユーザーはいません</p>
+    <% end %>
+  </div>
 </div>
