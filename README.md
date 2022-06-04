@@ -28,6 +28,6 @@
 
 ## 使用素材
 - [**イラストAC**](https://www.ac-illust.com/)
-- Storyset　https://storyset.com/
-- Tech Pic　http://tech-pic.com/
-- Subtle Patterns　https://www.toptal.com/designers/subtlepatterns/
+- [**Storyset**](https://storyset.com/)
+- [**Tech Pic**](http://tech-pic.com/)
+- [**Subtle Patterns**](https://www.toptal.com/designers/subtlepatterns/)
