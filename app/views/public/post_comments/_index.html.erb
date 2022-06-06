@@ -1,6 +1,6 @@
 <table>
   <tbody>
-      <% post_comments.each do |post_comment| %>
+      <% @post_comments.each do |post_comment| %>
       <tr>
         <td>
           <%= link_to user_path(post_comment.user) do %>
@@ -11,7 +11,7 @@
         <td class="w-100"><%= post_comment.comment %></td>
         <td>
           <% if post_comment.user == current_user %>
-          　<div class="text-right">
+            <div class="text-right">
               <%= link_to "削除", post_post_comment_path(post, post_comment), method: :delete, class: "btn btn-danger btn-sm", remote: true %>
             </div>
           <% end %>
@@ -20,4 +20,4 @@
       <% end %>
   </tbody>
 </table>
-<%= paginate post_comments %>
+<%= paginate @post_comments, :param_name => "post_comment_page" %>

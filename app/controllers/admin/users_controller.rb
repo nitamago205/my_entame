@@ -1,13 +1,13 @@
 class Admin::UsersController < ApplicationController
   def index
     @q = User.ransack(params[:q])
-    @users = @q.result(distinct: true).page(params[:page]).per(10)
+    @users = @q.result(distinct: true).page(params[:page]).per(6)
   end
 
   def show
     @user = User.find(params[:id])
     @q = @user.posts.ransack(params[:q])
-    @posts = @q.result(distinct: true).page(params[:page]).per(10)
+    @posts = @q.result(distinct: true).page(params[:page]).per(6)
     @genres = Genre.all
   end
 

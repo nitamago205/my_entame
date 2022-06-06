@@ -86,7 +86,7 @@
             </div>
           </div>
         <% end %>
-        <div class="mt-2"><%= paginate @selects %></div>
+        <div class="mt-2"><%= paginate @selects, :param_name => "select_page" %></div>
       <% else %>
         <p>マイセレクトはありません</p>
       <% end %>
