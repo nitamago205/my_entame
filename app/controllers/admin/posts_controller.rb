@@ -7,7 +7,8 @@ class Admin::PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
-    @selects = MySelect.where(post_id: @post.id)
+    @selects = MySelect.where(post_id: @post.id).page(params[:select_page]).per(5).order(created_at: "DESC")
+    @post_comments = @post.post_comments.page(params[:post_comment_page]).per(5).order(created_at: "DESC")
   end
 
   def edit
@@ -28,7 +29,7 @@ class Admin::PostsController < ApplicationController
   def destroy
     @post = Post.find(params[:id])
     if @post.destroy
-      redirect_to admin_user_path(@post.user)
+      redirect_to admin_user_path(@post.user), notice: "投稿を削除しました。"
     else
       render :edit
     end
