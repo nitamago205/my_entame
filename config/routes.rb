@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  namespace :admin do
+    get 'post_comments/destroy'
+  end
   devise_scope :user do
     post 'users/sign_up' => 'public/registrations#create'
     post 'users/guest_sign_in' => 'public/sessions#guest_sign_in'
@@ -23,6 +26,7 @@ Rails.application.routes.draw do
       resources :users, only: [:index, :show, :edit, :update, :destroy]
       resources :posts, only: [:index, :show, :edit, :update, :destroy] do
         resources :my_selects, only: [:edit, :update, :destroy]
+        resources :post_comments, only: [:destroy]
       end
   end
 
