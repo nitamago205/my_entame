@@ -1,6 +1,8 @@
 # マイ・エンタメ
 
 ## サイト概要
+<img width="718" alt="my_entame_image" src="https://user-images.githubusercontent.com/99108580/172554182-568a20ac-4004-4a38-959a-d001c0e583f9.png">
+
 ### サイトテーマ
 - アニメ、漫画、ゲーム、ドラマ、映画、テレビ番組、本、曲、様々なエンタメをレビューし、記録し、共有することができるサイト。
 
@@ -17,10 +19,17 @@
 - 知り合いが新しく触れたエンタメを知ることができる。
 
 ## 設計書
-<...>
+- 画面遷移図（ユーザー側）
+![マイ・エンタメ（画面遷移図、E-R図）-会員側 drawio](https://user-images.githubusercontent.com/99108580/172555844-d26278d9-f15e-497d-bea4-c2afa5aa7e70.png)
+- 画面遷移図（管理者側）
+![マイ・エンタメ（画面遷移図、E-R図）-管理側 drawio](https://user-images.githubusercontent.com/99108580/172556203-45629c8b-2317-4173-a46e-9c2765a3de1d.png)
+- E-R図
+![マイ・エンタメ（画面遷移図、E-R図）-E-R図 drawio](https://user-images.githubusercontent.com/99108580/172556239-1940b857-f206-4c05-b7ea-be388bb1a735.png)
+- [**テーブル定義書**](https://docs.google.com/spreadsheets/d/1h_4w1nNzXQazNh-1fCNcwaOjVJf7ciCLhZBSscM9bxw/edit?usp=sharing)
+- [**アプリケーション詳細設計書**](https://docs.google.com/spreadsheets/d/1Hah5XAJJVKxdDH7jzXfldODtVYThYdvfeUGHF_fn2Vo/edit?usp=sharing)
 
 ## 開発環境
-- OS：Linux(CentOS)
+- OS：Amazon Linux release 2 (Karoo)
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
 - フレームワーク：Ruby on Rails
 - JSライブラリ：jQuery
