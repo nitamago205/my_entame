@@ -30,8 +30,8 @@
 
 ## 開発環境
 - OS：Amazon Linux release 2 (Karoo)
-- 言語：HTML,CSS,JavaScript,Ruby,SQL
-- フレームワーク：Ruby on Rails
+- 言語：HTML,CSS,SCSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails,Bootstrap
 - JSライブラリ：jQuery
 - IDE：Cloud9
 
