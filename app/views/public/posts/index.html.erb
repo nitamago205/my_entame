@@ -14,8 +14,9 @@
       </div>
     <% end %>
     <div class="search_form">
-      <%= sort_link(@q, :created_at, "古い順/新しい順") %> |
-      <%= sort_link(@q, :rate, "レート低い順/高い順") %>
+      <%= sort_link(@q, :created_at, "新しい順/低い順", default_order: :desc ) %> |
+      <%= sort_link(@q, :rate, "レート順", default_order: :desc ) %> |
+      <%= sort_link(@q, :favorites_count, "いいね順", default_order: :desc ) %>
     </div>
     <%= render 'public/users/post_index', posts: @posts, params_name: "page" %>
   </div>
