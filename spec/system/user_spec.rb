@@ -5,7 +5,7 @@ RSpec.describe 'Userのテスト', type: :system do
   	let!(:user) { create(:user) }
   	context '新規登録' do
   		before do
-  			visit '/users/sign_up'
+  			visit new_user_registration_path
   		end
 
   		it '新規登録に成功' do
