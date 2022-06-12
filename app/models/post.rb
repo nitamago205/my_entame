@@ -11,4 +11,10 @@ class Post < ApplicationRecord
   def favorited_by?(user)
    favorites.where(user_id: user.id).exists?
   end
+  
+  # いいね順の並び替えで定義
+  ransacker :favorites_count do
+  query = '(SELECT COUNT(favorites.post_id) FROM favorites where favorites.post_id = posts.id GROUP BY favorites.post_id)'
+  Arel.sql(query)
+end
 end
