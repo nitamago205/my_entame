@@ -13,8 +13,9 @@
         <% end %>
       </div>
       <div class = "row search_form">
-        <%= sort_link(@q, :created_at, "古い順/新しい順") %> |
-        <%= sort_link(@q, :rate, "レート低い順/高い順") %>
+        <%= sort_link(@q, :created_at, "新しい順/低い順", default_order: :desc ) %> |
+        <%= sort_link(@q, :rate, "レート順", default_order: :desc ) %> |
+        <%= sort_link(@q, :favorites_count, "いいね順", default_order: :desc ) %>
       </div>
       <div class="tablist row nav nav-tabs" id="nav-tab" role="tablist">
         <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">
