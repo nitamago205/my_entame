@@ -64,7 +64,12 @@
             </li>
             <li class="nav-item">
               <%= link_to notifications_path, class:"nav-link text-light btn btn-primary mr-1 mb-1" do %>
-                <i class="fas fa-bell"></i>
+                <% if unchecked_notifications.any? %>
+                  <i class="fas fa-bell"></i>
+                  <i class="fas fa-exclamation-circle" style="color: gold;"></i>
+                <% else %>
+                  <i class="fas fa-bell"></i><!--通知マーク-->
+                <% end %>
               <% end %>
             </li>
           <% else %>

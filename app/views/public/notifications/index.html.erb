@@ -1,6 +1,8 @@
 <h3 class="text-center">通知</h3>
-    <%= link_to "通知削除", notification_path(@notifications), method: :delete ,class: "fas fa-trash" %>
-    <% if @notifications.exists? %>
+<%= link_to notification_path(@notifications), method: :delete, "data-confirm" => "本当に全通知削除しますか？" do %>
+    <i class="fas fa-trash"></i>全通知削除
+<% end %>
+<% if @notifications.exists? %>
     <div class="notification-index">
         <%= render @notifications %>
     </div>
