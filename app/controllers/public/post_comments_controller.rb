@@ -6,6 +6,8 @@ class Public::PostCommentsController < ApplicationController
     @post_comments = @post.post_comments.page(params[:page]).per(5).order(created_at: "DESC")
     if @post_comment.save
       @message = "コメントしました。"
+      #通知機能
+      @post.create_notification_post_comment!(current_user, @post_comment.id)
     end
   end
 
