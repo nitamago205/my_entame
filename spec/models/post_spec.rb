@@ -70,5 +70,11 @@ RSpec.describe 'Postモデルのテスト', type: :model do
         expect(Post.reflect_on_association(:favorites).macro).to eq :has_many
       end
     end
+
+     context 'Notificationモデルとの関係' do
+      it '1:Nとなっている' do
+        expect(Post.reflect_on_association(:notifications).macro).to eq :has_many
+      end
+    end
   end
 end
