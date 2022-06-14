@@ -1,0 +1,22 @@
+<%# notifications = @notifications.where.not(visitor_id: current_user.id) %>
+<div class="mt-5 mb-5">
+    <h3 class="heading col-10 col-md-4 col-xl-3 text-center">通知</h3>
+    <div class="flame container mt-5 mb-5">
+        <div class="text-right">
+            <%= link_to notification_path(@notifications), method: :delete, "data-confirm" => "本当に全通知削除しますか？", class: "btn btn-sm btn-danger mr-1 mb-1" do %>
+                <i class="fas fa-trash"></i>全通知削除
+            <% end %>
+        </div>
+
+        <% if @notifications.exists? %>
+            <div class="notification-index">
+                <%= render @notifications %>
+            </div>
+            <div>
+                <%= paginate @notifications %>
+            </div>
+        <% else %>
+            <p>通知はありません</p>
+        <% end %>
+    </div>
+</div>

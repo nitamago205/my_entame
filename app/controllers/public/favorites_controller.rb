@@ -3,6 +3,9 @@ class Public::FavoritesController < ApplicationController
     @post = Post.find(params[:post_id])
     @favorite = current_user.favorites.new(post_id: @post.id)
     @favorite.save
+    #通知機能
+    @post.create_notification_favorite!(current_user)
+
     # @q = Post.ransack(params[:q])
     # @user = User.find(params[:user_id])
     # @favorite_posts = @q.result(distinct: true).joins(:favorites).where(favorites: {user_id: @user.id}).page(params[:favorite_posts_page]).per(6).order(created_at: "DESC")

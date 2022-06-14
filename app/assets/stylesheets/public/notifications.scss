@@ -1,0 +1,17 @@
+// Place all the styles related to the public/notifications controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+.text_omit_notification {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.notification-circle {
+    position: absolute;
+   	font-size: 10px;
+}
+
+.bell-height {
+    height: 42px !important;
+}

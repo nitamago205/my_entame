@@ -37,14 +37,15 @@ Rails.application.routes.draw do
       get "/genre/:id" => "genres#show"
       resources :users, only: [:index, :show, :edit, :update] do
         resource :relationships, only: [:create, :destroy]
-      	get 'followings' => 'relationships#followings', as: 'followings'
-      	get 'followers' => 'relationships#followers', as: 'followers'
+        get 'followings' => 'relationships#followings', as: 'followings'
+        get 'followers' => 'relationships#followers', as: 'followers'
       end
       resources :posts do
         resources :post_comments, only: [:create, :destroy]
         resource :favorites, only: [:create, :destroy]
         resources :my_selects, only: [:new, :create, :edit, :update, :destroy]
       end
+      resources :notifications, only: [:index, :destroy]
   end
 
 end
