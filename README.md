@@ -20,11 +20,11 @@
 
 ## 設計書
 - 画面遷移図（ユーザー側）
-![マイ・エンタメ（画面遷移図、E-R図）-会員側 drawio](https://user-images.githubusercontent.com/99108580/172555844-d26278d9-f15e-497d-bea4-c2afa5aa7e70.png)
+![マイ・エンタメ（画面遷移図、E-R図）-会員側 drawio](https://user-images.githubusercontent.com/99108580/173503457-35e827d2-bf61-4ee3-9bec-5d60a312386c.png)
 - 画面遷移図（管理者側）
 ![マイ・エンタメ（画面遷移図、E-R図）-管理側 drawio](https://user-images.githubusercontent.com/99108580/172556203-45629c8b-2317-4173-a46e-9c2765a3de1d.png)
 - E-R図
-![マイ・エンタメ（画面遷移図、E-R図）-E-R図 drawio](https://user-images.githubusercontent.com/99108580/172556239-1940b857-f206-4c05-b7ea-be388bb1a735.png)
+![マイ・エンタメ（画面遷移図、E-R図）-E-R図 drawio](https://user-images.githubusercontent.com/99108580/173503436-0b1b6b80-a91d-48e6-b72e-8e6e808e4b65.png)
 - [**テーブル定義書**](https://docs.google.com/spreadsheets/d/1h_4w1nNzXQazNh-1fCNcwaOjVJf7ciCLhZBSscM9bxw/edit?usp=sharing)
 - [**アプリケーション詳細設計書**](https://docs.google.com/spreadsheets/d/1Hah5XAJJVKxdDH7jzXfldODtVYThYdvfeUGHF_fn2Vo/edit?usp=sharing)
 

@@ -14,7 +14,7 @@
       </div>
     <% end %>
     <div class="search_form">
-      <%= sort_link(@q, :created_at, "新しい順/低い順", default_order: :desc ) %> |
+      <%= sort_link(@q, :created_at, "新しい順/古い順", default_order: :desc ) %> |
       <%= sort_link(@q, :rate, "レート順", default_order: :desc ) %> |
       <%= sort_link(@q, :favorites_count, "いいね順", default_order: :desc ) %>
     </div>
