@@ -2,6 +2,8 @@
 
 ## サイト概要
 <img width="718" alt="my_entame_image" src="https://user-images.githubusercontent.com/99108580/172554182-568a20ac-4004-4a38-959a-d001c0e583f9.png">
+- サイトURL https://myentame.com/
+    - レスポンシブ対応している為、スマホからでもご確認頂けます。
 
 ### サイトテーマ
 - アニメ、漫画、ゲーム、ドラマ、映画、テレビ番組、本、曲、様々なエンタメをレビューし、記録し、共有することができるサイト。
@@ -17,6 +19,60 @@
 - エンタメを記録し、確認することができる。
 - 自己紹介でレビューを見てもらい、趣味嗜好を知ってもらうことができる。
 - 知り合いが新しく触れたエンタメを知ることができる。
+
+## 使用技術
+- Ruby 2.6.3
+- Ruby on Rails 6.1.5.1
+- MySQL 15.1
+- Nginx
+- Puma
+- AWS
+    - EC2
+    - RDS
+    - VPC
+    - Route53
+- RSpec
+- Rubocop(リーダブルコード)
+
+## 機能一覧
+- 新規登録機能(devise)
+- ログイン機能(devise)
+- ゲストログイン機能
+- アカウント退会機能(管理者＆自己のみ)
+- アカウント削除機能(管理者のみ)
+- 投稿機能
+- レート機能(星5つで0.5刻みで評価)
+- いいね機能(Ajax)
+    - いいね数表示
+- コメント機能(Ajax)
+    - コメント数表示
+- フォロー機能
+- 検索機能(ransack)
+    - 投稿タイトル検索
+    - ユーザー名検索
+- 絞り込み機能(ransack)
+    - ジャンル別投稿一覧
+    - いいねした投稿一覧
+    - コメントした投稿一覧
+- 並び替え機能(ransack)
+    - 新しい順/古い順
+    - レート順
+    - いいね順
+- ページネーション機能(kaminari)
+- 通知機能
+    - いいね通知
+    - コメント通知
+    - フォロー通知
+    - 未読メッセージ通知
+- レスポンシブ対応
+    - スマホでも確認できます
+
+### テスト
+- [**テスト仕様書**](https://docs.google.com/spreadsheets/d/1qWFT5Y5v1nOheiFOOk85ZPNq4w_GPbFC/edit?usp=sharing&ouid=110514537080918976334&rtpof=true&sd=true)
+- Rsec/factoryBot
+    - 単体テスト(model)
+    - 機能テスト(request)
+    - 結合テスト(system)
 
 ## 設計書
 - 画面遷移図（ユーザー側）
@@ -40,3 +96,8 @@
 - [**Storyset**](https://storyset.com/)
 - [**Tech Pic**](http://tech-pic.com/)
 - [**Subtle Patterns**](https://www.toptal.com/designers/subtlepatterns/)
+
+## 今後改善すべき点
+- Rspecでのテストが少ない為、追加すること
+- 問い合わせ機能の導入
+- パスワード再設定機能の導入

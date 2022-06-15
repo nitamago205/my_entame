@@ -98,6 +98,8 @@
     <div class="post-comments-index w-100">
       <%= render "public/post_comments/index", post: @post, post_comments: @post_comments %>
     </div>
+     <%#= paginate @post_comments, :param_name => "post_comment_page" %>
+
     <span id="flash"></span> <!-- Flash message for jQuery -->
     <div class="comments_error">
       <%= render 'layouts/error_messages', model: @post_comment %>
