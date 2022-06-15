@@ -35,6 +35,9 @@
 - RSpec
 - Rubocop(リーダブルコード)
 
+## インフラ(AWS)構成図
+![AWS構成図_マイエンタメ drawio](https://user-images.githubusercontent.com/99108580/173863349-348e3ef0-a6d0-4b22-8c56-00b2013c1c31.png)
+
 ## 機能一覧
 - 新規登録機能(devise)
 - ログイン機能(devise)
