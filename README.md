@@ -2,8 +2,9 @@
 
 ## サイト概要
 <img width="718" alt="my_entame_image" src="https://user-images.githubusercontent.com/99108580/172554182-568a20ac-4004-4a38-959a-d001c0e583f9.png">
-- サイトURL https://myentame.com/
-    - レスポンシブ対応している為、スマホからでもご確認頂けます。
+
+#### サイトURL https://myentame.com/
+※ レスポンシブ対応している為、スマホからでもご確認頂けます。
 
 ### サイトテーマ
 - アニメ、漫画、ゲーム、ドラマ、映画、テレビ番組、本、曲、様々なエンタメをレビューし、記録し、共有することができるサイト。
@@ -69,7 +70,7 @@
 
 ### テスト
 - [**テスト仕様書**](https://docs.google.com/spreadsheets/d/1qWFT5Y5v1nOheiFOOk85ZPNq4w_GPbFC/edit?usp=sharing&ouid=110514537080918976334&rtpof=true&sd=true)
-- Rsec/factoryBot
+- RSpec/factoryBot
     - 単体テスト(model)
     - 機能テスト(request)
     - 結合テスト(system)
