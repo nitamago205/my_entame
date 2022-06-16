@@ -47,8 +47,8 @@
         </td>
       </tr>
         <td>
-          <%= link_to '編集', edit_post_path(@post), class: "btn btn-sm btn-success edit_post_#{@post.id} mr-5" %>
-          <%= link_to '削除', @post, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_post_#{@post.id}" %>
+          <%= link_to '編集', edit_admin_post_path(@post), class: "btn btn-sm btn-success edit_post_#{@post.id} mr-5" %>
+          <%= link_to '削除', admin_post_path(@post), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_post_#{@post.id}" %>
         </td>
     </table>
   </div>
@@ -67,8 +67,8 @@
                 <%= select.body %>
               </div>
               <div class="m-2">
-                <%= link_to '編集', edit_post_my_select_path(@post, select), class: "btn btn-sm btn-success edit_post_my_select_#{select.id}" %>
-                <%= link_to '削除', post_my_select_path(@post, select), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_post_my_select_#{select.id}" %>
+                <%= link_to '編集', edit_admin_post_my_select_path(@post, select), class: "btn btn-sm btn-success edit_post_my_select_#{select.id}" %>
+                <%= link_to '削除', admin_post_my_select_path(@post, select), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_post_my_select_#{select.id}" %>
               </div>
             </div>
           </div>
