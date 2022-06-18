@@ -11,7 +11,7 @@
         <td class="w-100"><%= post_comment.comment %></td>
         <td>
           <div class="text-right">
-            <%= link_to "削除", admin_post_post_comment_path(post, post_comment), method: :delete, class: "btn btn-danger btn-sm" %>
+            <%= link_to "削除", admin_post_post_comment_path(post, post_comment), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-danger btn-sm" %>
           </div>
         </td>
       </tr>

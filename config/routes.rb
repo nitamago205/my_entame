@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
 
-  namespace :admin do
-    get 'post_comments/destroy'
-  end
   devise_scope :user do
     post 'users/sign_up' => 'public/registrations#create'
     post 'users/guest_sign_in' => 'public/sessions#guest_sign_in'
