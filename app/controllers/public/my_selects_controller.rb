@@ -47,7 +47,8 @@ class Public::MySelectsController < ApplicationController
 
   def ensure_correct_user
     @post = Post.find(params[:post_id])
-    unless @post.user == current_user
+    @select = MySelect.find(params[:id])
+    unless @post.user == current_user && @post.id == @select.post_id
       redirect_to posts_path, notice: "権限がありません。"
     end
   end
