@@ -1,6 +1,8 @@
 <div class="container">
   <div class="row">
-    <h3 class="my-5 bg-light">フォローワー一覧</h3>
+    <h3 class="heading text-center col-11 col-md-10 col-xl-8">
+      <div class="text_omit"><%= @user.name %>さんの</div>フォローワー一覧
+    </h3>
   </div>
   <div class="flame container text-center mt-5 mb-5">
     <% if @users.exists? %>
