@@ -20,6 +20,9 @@
         <td>ジャンル名：<%= @post.genre.genre_name %></td>
       </tr>
       <tr>
+        <td>投稿日時：<%= @post.created_at.strftime('%Y/%m/%d') %></td>
+      </tr>
+      <tr>
         <td class="d-flex">
           <div>いいね数：</div>
           <div class="favorite_buttons_<%= @post.id %>">
