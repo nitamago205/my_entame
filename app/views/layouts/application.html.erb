@@ -11,24 +11,27 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <div class="footerFixed">
 
-    <header>
-      <%= render 'layouts/header' %>
-    </header>
+  <body>
+    
+    <div class="footerFixed">
 
-    <body>
+      <header>
+        <%= render 'layouts/header' %>
+      </header>
+
       <%= flash[:notice] %>
       <%= flash[:alert] %>
       <%= yield %>
-    </body>
 
-    <footer>
-      <div class="text-center web-copyright pt-3 pb-3">
-        Copyright © my_entame
-      </div>
-    </footer>
+      <footer>
+        <div class="text-center web-copyright pt-3 pb-3">
+          Copyright © my_entame
+        </div>
+      </footer>
 
-  </div>
+    </div>
+    
+  </body>
 
 </html>
