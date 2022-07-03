@@ -70,7 +70,7 @@
         <%= link_to "新規マイセレクト追加", new_post_my_select_path(@post), class: "btn btn-outline-info m-3" %>
       <% end %>
     </div>
-    <div class="w-100 test-center m-auto row">
+    <div class="w-100 test-center m-auto row"> <!-- マイセレクト一覧 -->
       <% if @selects.exists? %>
         <% @selects.each do |select| %>
           <div class="w-100 mt-3">
@@ -99,7 +99,7 @@
 
   <div class="flame row mt-5 mb-3">
     <h4 class="sub_heading mt-2">コメント</h4>
-    <div class="post-comments-index w-100">
+    <div class="post-comments-index w-100"> <!-- コメント一覧 -->
       <%= render "public/post_comments/index", post: @post, post_comments: @post_comments %>
     </div>
     <%= paginate @post_comments, :param_name => "post_comment_page" %>
@@ -108,7 +108,7 @@
     <div class="comments_error">
       <%= render 'layouts/error_messages', model: @post_comment %>
     </div>
-    <div class="col-12">
+    <div class="col-12"> <!-- コメント投稿フォーム -->
       <%= render "public/post_comments/form", post: @post, post_comment: @post_comment %>
     </div>
   </div>
