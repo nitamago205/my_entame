@@ -4,6 +4,7 @@
       <div class="text_omit"><%= @user.name %>さんの</div>フォローワー一覧
     </h3>
   </div>
+  <!-- フォローワー一覧 -->
   <div class="flame container text-center mt-5 mb-5">
     <% if @users.exists? %>
       <%= render 'public/users/index',users: @users %>
